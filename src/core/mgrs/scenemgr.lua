@@ -1,10 +1,10 @@
 _G.scenemgr = class('scenemgr',manager)
 
 function scenemgr:create()
-    self.sSceneName = "mainscene";
+    self.sSceneName = g_project.CUR_PROJECT_MAINSCENE;
     self.tbSceneList = {};
     self.tbSceneList = self.tbSceneList or {};
-    self:createScene("mainscene");
+    self:createScene(g_project.CUR_PROJECT_MAINSCENE);
     cameramgr:getInstance():create();
 end
 

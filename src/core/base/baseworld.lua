@@ -56,39 +56,7 @@ function baseworld:getFilterTarget( tbCompoList )
             end
         end
     end
-
-    table.sort(tbEntList, function(a,b)
-        if a ~= nil and b ~= nil then 
-            local a_c_sortorder = a:getComponent("sortorder");
-            local b_c_sortorder = b:getComponent("sortorder");
-            local a_c_position = a:getComponent("position");
-            local b_c_position = b:getComponent("position");
-            local a_c_size = a:getComponent("size"); 
-            local b_c_size = b:getComponent("size"); 
-            if a_c_sortorder and b_c_sortorder and 
-            a_c_position and b_c_position and 
-            a_c_size and b_c_size then 
-                local a_nLayerIndex = a_c_sortorder:getAttribute("nLayerIndex");
-                local b_nLayerIndex = b_c_sortorder:getAttribute("nLayerIndex");
-                local ay = a_c_position:getAttribute("y") + a_c_size:getAttribute("h");
-                local by = b_c_position:getAttribute("y") + b_c_size:getAttribute("h");
-                if a_nLayerIndex == g_tbLayer.HUMAN and b_nLayerIndex == g_tbLayer.HUMAN then
-                    return ay < by;
-                elseif a_nLayerIndex == g_tbLayer.HUMAN_DOWN and b_nLayerIndex == g_tbLayer.HUMAN_DOWN then
-                    return ay < by;
-                elseif a_nLayerIndex == g_tbLayer.GROUND_UP and b_nLayerIndex == g_tbLayer.GROUND_UP then
-                    return ay < by;
-                elseif a_nLayerIndex == g_tbLayer.SKY and b_nLayerIndex == g_tbLayer.SKY then
-                    return ay < by;
-                elseif a_nLayerIndex == g_tbLayer.GROUND and b_nLayerIndex == g_tbLayer.GROUND then
-                    return ay < by;
-                else 
-                    return ay < by;
-                end
-            end 
-        end
-    end)
-
+    self:sortDrawIndex(tbEntList);
     return tbEntList;
 end
 
@@ -146,4 +114,40 @@ function baseworld:destory()
     end 
     self.tbEntitiesList = nil;
     self.tbSystemList = nil;
+end
+
+function baseworld:sortDrawIndex(tbEntList)
+    if g_project.CUR_PROJECT_TYPE == "roguelike" then 
+        table.sort(tbEntList, function(a,b)
+            if a ~= nil and b ~= nil then 
+                local a_c_sortorder = a:getComponent("sortorder");
+                local b_c_sortorder = b:getComponent("sortorder");
+                local a_c_position = a:getComponent("position");
+                local b_c_position = b:getComponent("position");
+                local a_c_size = a:getComponent("size"); 
+                local b_c_size = b:getComponent("size"); 
+                if a_c_sortorder and b_c_sortorder and 
+                a_c_position and b_c_position and 
+                a_c_size and b_c_size then 
+                    local a_nLayerIndex = a_c_sortorder:getAttribute("nLayerIndex");
+                    local b_nLayerIndex = b_c_sortorder:getAttribute("nLayerIndex");
+                    local ay = a_c_position:getAttribute("y") + a_c_size:getAttribute("h");
+                    local by = b_c_position:getAttribute("y") + b_c_size:getAttribute("h");
+                    if a_nLayerIndex == g_tbLayer.HUMAN and b_nLayerIndex == g_tbLayer.HUMAN then
+                        return ay < by;
+                    elseif a_nLayerIndex == g_tbLayer.HUMAN_DOWN and b_nLayerIndex == g_tbLayer.HUMAN_DOWN then
+                        return ay < by;
+                    elseif a_nLayerIndex == g_tbLayer.GROUND_UP and b_nLayerIndex == g_tbLayer.GROUND_UP then
+                        return ay < by;
+                    elseif a_nLayerIndex == g_tbLayer.SKY and b_nLayerIndex == g_tbLayer.SKY then
+                        return ay < by;
+                    elseif a_nLayerIndex == g_tbLayer.GROUND and b_nLayerIndex == g_tbLayer.GROUND then
+                        return ay < by;
+                    else 
+                        return ay < by;
+                    end
+                end 
+            end
+        end)
+    end
 end

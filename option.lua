@@ -20,6 +20,8 @@ _G.g_tbLayer =
 _G.g_project = 
 {
     CUR_PROJECT_NAME = "demo1",
+    CUR_PROJECT_TYPE = "roguelike", -- roguelike,
+    CUR_PROJECT_MAINSCENE = "mainscene",
 }
 
 _G.g_color = 
