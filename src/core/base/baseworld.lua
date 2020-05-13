@@ -93,6 +93,9 @@ function baseworld:getFilterTarget( tbCompoList )
 end
 
 function baseworld:update(dt)
+    if self.tbSystemList == nil then 
+        return
+    end 
     for _,iSys in pairs(self.tbSystemList) do 
         if iSys.update then 
             iSys:update(dt);
@@ -101,6 +104,9 @@ function baseworld:update(dt)
 end
 
 function baseworld:draw()
+    if self.tbSystemList == nil then 
+        return
+    end
     for _,iSys in pairs(self.tbSystemList) do 
         if iSys.draw then 
             iSys:draw();

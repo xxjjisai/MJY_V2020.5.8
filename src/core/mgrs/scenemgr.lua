@@ -10,7 +10,7 @@ end
 
 function scenemgr:createScene(sSceneName)
     if _G[sSceneName] == nil then 
-        self:trace(3,"check scene name");
+        self:trace(3,"check scene name",sSceneName);
         return
     end 
     _G[sSceneName]:getInstance():create();
