@@ -15,8 +15,8 @@ function cameramgr:SetCameraStyle(Camera_Follow_Lerp,Camera_Follow_Style,scale)
     self.tbOrigin.scale = camera.scale;
 end
 
-function cameramgr:SetFollowPlayer(actor)
-    self.iFollowPlayer = actor;
+function cameramgr:SetFollowPlayer(iTargetEnt)
+    self.iFollowPlayer = iTargetEnt;
 end
 
 function cameramgr:RestCameraToOrigin()
@@ -55,19 +55,19 @@ function cameramgr:update(dt)
         camera.scale = 1;
     end 
     camera:update(dt);
-    -- self:Follow();
+    self:Follow();
 end 
 
 function cameramgr:Follow()  
     if not self.iFollowPlayer then return end;
-    local actor = self.iFollowPlayer;
-    local compo_Position = actor:GetCompo("Position")
-    local compo_Size = actor:GetCompo("Size")
-    if compo_Position and compo_Size then
-        local x = compo_Position:GetData("x");
-        local y = compo_Position:GetData("y");
-        local w = compo_Size:GetData("x");
-        local h = compo_Size:GetData("y");
+    local iTargetEnt = self.iFollowPlayer;
+    local c_position = iTargetEnt:getComponent("position");
+    local c_size = iTargetEnt:getComponent("size")
+    if c_position and c_size then
+        local x = c_position:getAttribute("x");
+        local y = c_position:getAttribute("y");
+        local w = c_size:getAttribute("w");
+        local h = c_size:getAttribute("h");
         local tx,ty = x + w * 0.5, y + h * 0.5;
         camera:follow(tx,ty);
     end
@@ -88,6 +88,12 @@ function cameramgr:RenderAttach(pfn)
         pfn();
     end 
     self:Detach()  
+    if g_option.DEBUG >= 2 then 
+        love.graphics.setColor(1,1,1,1)
+        local x = W / 2 - 32 / 2 ;
+        local y = H / 2 - 32 / 2 ;
+        love.graphics.rectangle("line",x,y,32,32)
+    end
 end 
 
 function cameramgr:Shake(nDouFU,nDuration, nHz)
