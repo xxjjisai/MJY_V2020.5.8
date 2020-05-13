@@ -82,3 +82,7 @@ end
 function system:onUpdate(dt)
 
 end
+
+function system:getSystem(sClassName)
+    return baseworld:getInstance():getSystem(sClassName);
+end

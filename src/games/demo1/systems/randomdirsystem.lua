@@ -72,6 +72,6 @@ function randomdirsystem:onUpdate(dt)
         elseif dirx == -1 and diry == 0 then  
             nStartFrame,nEndFrame = 5,8; -- l
         end
-        animationsystem:Play(iTargetEnt,nStartFrame,nEndFrame)
+        self:getSystem("animationsystem"):Play(iTargetEnt,nStartFrame,nEndFrame)
     end 
 end

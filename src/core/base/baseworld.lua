@@ -35,6 +35,10 @@ function baseworld:registerSystem(iSys)
     self.tbSystemList[iSys.class.name] = iSys;
 end
 
+function baseworld:getSystem(sClassName)
+    return self.tbSystemList[sClassName];
+end
+
 function baseworld:removeSystem(iSys)
     for _,tmp_iSys in pairs(self.tbSystemList) do 
         if tmp_iSys.id == iSys.id then 
