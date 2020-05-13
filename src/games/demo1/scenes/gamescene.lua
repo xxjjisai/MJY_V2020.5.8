@@ -7,8 +7,6 @@ function gamescene:onEnterScene()
 
         local e_gametitle = gametitle:new({c_title});
 
-        local s_welceomsystem = welceomsystem:new();
-
         -------------------------------------------------------------------------------------------------
 
         for i=1,1000 do
@@ -42,17 +40,18 @@ function gamescene:onEnterScene()
             local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1,c_direction_1});
         end
 
+        local s_welceomsystem = welceomsystem:new();
         -- local s_drawshapesystem = drawshapesystem:new();
         local s_moveshapesystem = moveshapesystem:new();
         local s_animationsystem = animationsystem:new();
         local s_randomdirsystem = randomdirsystem:new();
 
-        -- local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
-        -- btn_help:SetPositionCenter(0,130);
-        -- btn_help:SetText("小汤山");
-        -- btn_help:SetData("Oper", "onClick", function ()
-        --     scenemgr:getInstance():switchScene("xiaotangshanscene");
-        -- end)
+        local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
+        btn_help:SetPositionCenter(0,230);
+        btn_help:SetText("小汤山");
+        btn_help:SetData("Oper", "onClick", function ()
+            scenemgr:getInstance():switchScene("xiaotangshanscene");
+        end)
 
         local btn_startup = uimgr:getInstance():create("shapebutton","btn_startup");
         btn_startup:SetPositionCenter(0,130);

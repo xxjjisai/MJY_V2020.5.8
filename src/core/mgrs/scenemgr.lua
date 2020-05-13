@@ -55,3 +55,14 @@ function scenemgr:transitionScene(pfn)
         cameramgr:getInstance():Fade(nTime,0,0,0,0);
     end);
 end
+
+function scenemgr:startupSystem(sTime,pfn)
+    local nTime = g_project.CUR_PROJECT_SCENE_TRANSITION_TIME;
+    local pfn = pfn;
+    local sTime = sTime or 0.1;
+    timer:after(sTime,function ()
+        if pfn then 
+            pfn();
+        end 
+    end)
+end

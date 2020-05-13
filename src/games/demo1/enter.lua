@@ -30,6 +30,7 @@ _G.enter =
         "helpscene",
         "gamescene",
         "xiaotangshan/xiaotangshanscene",
+        "xiaotangshan/huoshenshanscene",
     };
 
     systems = 

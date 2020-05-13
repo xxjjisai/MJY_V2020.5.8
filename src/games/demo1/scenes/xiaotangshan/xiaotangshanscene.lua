@@ -4,15 +4,13 @@ function xiaotangshanscene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
         local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "小汤山", 
                                                         sVersion = "V2020.5.8", color = g_color.SECURITY});
-
         local e_gametitle = gametitle:new({c_title});
-
-        local s_welceomsystem = welceomsystem:new();
-
         for i=1,1000 do
+            local randomNum = math.random();
             local c_position_1 = position:new({ x = math.random(1,960), y = math.random(1,640) });
+            local c_direction_1 = direction:new({ x = 1, y = 1 });
             local c_size_1 = size:new({ w = math.random(10,30), h = math.random(10,30) });
-            local c_speed_1 = speed:new({speed = math.random(5,10)});
+            local c_speed_1 = speed:new({speed = math.random(5,10) });
             local c_sortorder_1 = sortorder:new({nLayerIndex = g_tbLayer.HUMAN});
             local c_animaterender_1 = animaterender:new({
                 order = 1, 
@@ -35,18 +33,26 @@ function xiaotangshanscene:onEnterScene()
                 shapeType = "rectangle",
                 fillType = "line"
             });
-            local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1});
+            local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1,c_direction_1});
         end
 
+        local s_welceomsystem = welceomsystem:new();
         -- local s_drawshapesystem = drawshapesystem:new();
         local s_moveshapesystem = moveshapesystem:new();
         local s_animationsystem = animationsystem:new();
+        local s_randomdirsystem = randomdirsystem:new();
+
+        scenemgr:getInstance():startupSystem(0.1,function ()
+            s_randomdirsystem:startup();
+            s_moveshapesystem:startup();
+            s_animationsystem:startup();
+        end)
 
         local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
         btn_help:SetPositionCenter(0,130);
-        btn_help:SetText("欢迎");
+        btn_help:SetText("火神山");
         btn_help:SetData("Oper", "onClick", function ()
-            scenemgr:getInstance():switchScene("welcomescene");
+            scenemgr:getInstance():switchScene("huoshenshanscene");
         end)
     end)
 end
