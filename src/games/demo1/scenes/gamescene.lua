@@ -47,11 +47,21 @@ function gamescene:onEnterScene()
         local s_animationsystem = animationsystem:new();
         local s_randomdirsystem = randomdirsystem:new();
 
-        local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
-        btn_help:SetPositionCenter(0,130);
-        btn_help:SetText("小汤山");
-        btn_help:SetData("Oper", "onClick", function ()
-            scenemgr:getInstance():switchScene("xiaotangshanscene");
+        -- local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
+        -- btn_help:SetPositionCenter(0,130);
+        -- btn_help:SetText("小汤山");
+        -- btn_help:SetData("Oper", "onClick", function ()
+        --     scenemgr:getInstance():switchScene("xiaotangshanscene");
+        -- end)
+
+        local btn_startup = uimgr:getInstance():create("shapebutton","btn_startup");
+        btn_startup:SetPositionCenter(0,130);
+        btn_startup:SetText("启动");
+        btn_startup:SetData("Oper", "onClick", function ()
+            s_randomdirsystem:startup();
+            s_moveshapesystem:startup();
+            s_animationsystem:startup();
+            uimgr:getInstance():remove(btn_startup);
         end)
     end)
 end

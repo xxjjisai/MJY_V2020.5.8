@@ -38,13 +38,13 @@ function randomdirsystem:onUpdate(dt)
         local c_position = iTargetEnt:getComponent("position");
         local px = c_position:getAttribute('x');
         local py = c_position:getAttribute('y');
-        if px <= 0 then 
+        if px <= 0+32 then 
             randomIdx = 5;
         end
         if px >= W - 32 then 
             randomIdx = 6;
         end
-        if py <= 0 then 
+        if py <= 0+32 then 
             randomIdx = 7;
         end
         if py >= H - 32 then 

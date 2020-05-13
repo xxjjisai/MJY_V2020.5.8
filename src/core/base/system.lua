@@ -15,6 +15,9 @@ end
 
 function system:update(dt)
     self:filterTargetHandler();
+    if not self.bStartUpUpdate then 
+        return
+    end
     self:onUpdate(dt)
 end
 
@@ -29,11 +32,17 @@ end
 
 function system:enterScene()
     self:filterTargetHandler();
+    self.bStartUpUpdate = false;
     self:onEnterScene();
+end
+
+function system:startup()
+    self.bStartUpUpdate = true;
 end
 
 function system:exitScene()
     self:destory();
+    self.bStartUpUpdate = nil;
     self:onExitScene();
 end
 

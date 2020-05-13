@@ -12,13 +12,15 @@ function uimgr:remove(ui)
     if self.tbUIList == nil then 
         return 
     end 
+    local tmp_sName = ""
     for sName,iUI in pairs(self.tbUIList) do 
         if iUI.id == ui.id then 
-            iUI:Destory();
-            iUI = nil;
-            return;
+            tmp_sName = sName;
+            break;
         end 
     end
+    self.tbUIList[tmp_sName] = nil;
+    return;
 end
 
 function uimgr:destory()
