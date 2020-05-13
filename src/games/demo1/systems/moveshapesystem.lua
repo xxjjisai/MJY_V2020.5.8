@@ -1,7 +1,7 @@
 _G.moveshapesystem = class("moveshapesystem", system);
 
 function moveshapesystem:getRequestComponents()
-    return {'position','speed'};
+    return {'position','speed','direction'};
 end
 
 function moveshapesystem:onUpdate(dt)
@@ -11,7 +11,10 @@ function moveshapesystem:onUpdate(dt)
         local y = c_position:getAttribute("y");
         local c_speed = iTargetEnt:getComponent("speed");
         local speed = c_speed:getAttribute("speed");
-        c_position:addAttribute("x",x + speed * dt);
-        c_position:addAttribute("y",y + speed * dt);
+        local c_direction = iTargetEnt:getComponent("direction");
+        local dirx = c_direction:getAttribute('x');
+        local diry = c_direction:getAttribute('y');
+        c_position:addAttribute("x",x + dirx * (speed * dt));
+        c_position:addAttribute("y",y + diry * (speed * dt));
     end 
 end

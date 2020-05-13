@@ -9,6 +9,7 @@ _G.enter =
         "speed",
         "title",
         "sortorder",
+        "direction",
     };
     
     configs = 
@@ -37,5 +38,6 @@ _G.enter =
         "moveshapesystem",
         "welceomsystem",
         "animationsystem",
+        "randomdirsystem",
     };
 }
