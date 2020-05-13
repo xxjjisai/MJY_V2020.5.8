@@ -22,6 +22,7 @@ _G.g_project =
     CUR_PROJECT_NAME = "demo1",
     CUR_PROJECT_TYPE = "roguelike", -- roguelike,
     CUR_PROJECT_MAINSCENE = "mainscene",
+    CUR_PROJECT_SCENE_TRANSITION_TIME = 1, 
 }
 
 _G.g_color = 

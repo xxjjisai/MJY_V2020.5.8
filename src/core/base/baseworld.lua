@@ -18,6 +18,7 @@ end
 
 function baseworld:addEntity(iEnt)
     local sEntName = iEnt.class.name .. iEnt.id;
+    self.tbEntitiesList = self.tbEntitiesList or {};
     self.tbEntitiesList[sEntName] = iEnt;
 end
 

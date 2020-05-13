@@ -13,8 +13,8 @@ function scenemgr:createScene(sSceneName)
         self:trace(3,"check scene name",sSceneName);
         return
     end 
-    _G[sSceneName]:getInstance():create();
     self.tbSceneList[sSceneName] = sSceneName;
+    _G[sSceneName]:getInstance():create();
     _G[sSceneName]:getInstance():enterScene();
     self.sSceneName = sSceneName;
 end
@@ -39,10 +39,19 @@ function scenemgr:switchScene(sSceneName)
         self:createScene(sSceneName);
         return
     end
-    -- todo...场景切换效果
     _G[sSceneName]:getInstance():create();
-    -- todo...场景切换效果
     _G[sSceneName]:getInstance():enterScene();
     self.sSceneName = sSceneName;
 end
 
+function scenemgr:transitionScene(pfn)
+    local nTime = g_project.CUR_PROJECT_SCENE_TRANSITION_TIME;
+    local pfn = pfn;
+    cameramgr:getInstance():Fade(nTime,0,0,0,1,function ()
+        if pfn then 
+            pfn();
+            baseworld:getInstance():enterScene();
+        end
+        cameramgr:getInstance():Fade(nTime,0,0,0,0);
+    end);
+end
