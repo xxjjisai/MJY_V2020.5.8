@@ -1,0 +1,1 @@
+"E:\RGSNebula\LOVE_PROJECT\LOVE11.1\LOVE\love.exe" "%cd%"
