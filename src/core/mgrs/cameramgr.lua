@@ -87,7 +87,7 @@ function cameramgr:RenderAttach(pfn)
     if pfn then 
         pfn();
     end 
-    self:Detach()
+    self:Detach();
 end 
 
 function cameramgr:Shake(nDouFU,nDuration, nHz)
