@@ -87,13 +87,7 @@ function cameramgr:RenderAttach(pfn)
     if pfn then 
         pfn();
     end 
-    self:Detach()  
-    if g_option.DEBUG >= 2 then 
-        love.graphics.setColor(1,1,1,1)
-        local x = W / 2 - 32 / 2 ;
-        local y = H / 2 - 32 / 2 ;
-        love.graphics.rectangle("line",x,y,32,32)
-    end
+    self:Detach()
 end 
 
 function cameramgr:Shake(nDouFU,nDuration, nHz)
