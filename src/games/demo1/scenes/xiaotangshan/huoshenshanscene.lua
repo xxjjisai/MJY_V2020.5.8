@@ -8,6 +8,8 @@ function huoshenshanscene:onEnterScene()
 
         local s_welceomsystem = welceomsystem:new();
 
+        self:initCamera();
+
         local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
         btn_help:SetPositionCenter(0,130);
         btn_help:SetText("欢迎");

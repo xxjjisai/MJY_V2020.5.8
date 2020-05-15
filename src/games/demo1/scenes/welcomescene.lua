@@ -8,6 +8,8 @@ function welcomescene:onEnterScene()
         local e_gametitle = gametitle:new({c_title});
     
         local s_welceomsystem = welceomsystem:new();
+
+        self:initCamera();
     
         local btn_enter = uimgr:getInstance():create("shapebutton","btn_enter");
         btn_enter:SetPositionCenter(0,130);

@@ -5,6 +5,9 @@ function xiaotangshanscene:onEnterScene()
         local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "小汤山", 
                                                         sVersion = "V2020.5.8", color = g_color.SECURITY});
         local e_gametitle = gametitle:new({c_title});
+
+        self:initCamera();
+
         for i=1,1000 do
             local randomNum = math.random();
             local c_position_1 = position:new({ x = math.random(1,960), y = math.random(1,640) });

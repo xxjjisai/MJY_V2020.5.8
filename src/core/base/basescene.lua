@@ -11,6 +11,10 @@ function basescene:getInstance()
     return self.instance;
 end
 
+function basescene:initCamera()
+    camera:follow(W/2,H/2);
+end
+
 function basescene:create()
     baseworld:getInstance():create();
 end
