@@ -29,8 +29,8 @@ _G.enter =
         "welcomescene",
         "helpscene",
         "gamescene",
-        "xiaotangshan/xiaotangshanscene",
-        "xiaotangshan/huoshenshanscene",
+        "otherscene/xinshouchunscene",
+        "otherscene/laoshouchunscene",
     };
 
     systems = 

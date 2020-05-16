@@ -1,8 +1,8 @@
-_G.xiaotangshanscene = class('xiaotangshanscene',basescene)
+_G.xinshouchunscene = class('xinshouchunscene',basescene)
 
-function xiaotangshanscene:onEnterScene()
+function xinshouchunscene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
-        local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "小汤山", 
+        local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "新手村", 
                                                         sVersion = "V2020.5.8", color = g_color.SECURITY});
         local e_gametitle = gametitle:new({c_title});
 
@@ -53,9 +53,9 @@ function xiaotangshanscene:onEnterScene()
 
         local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
         btn_help:SetPositionCenter(0,130);
-        btn_help:SetText("火神山");
+        btn_help:SetText("老手村");
         btn_help:SetData("Oper", "onClick", function ()
-            scenemgr:getInstance():switchScene("huoshenshanscene");
+            scenemgr:getInstance():switchScene("laoshouchunscene");
         end)
     end)
 end

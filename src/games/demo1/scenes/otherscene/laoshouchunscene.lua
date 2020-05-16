@@ -1,8 +1,8 @@
-_G.huoshenshanscene = class('huoshenshanscene',basescene)
+_G.laoshouchunscene = class('laoshouchunscene',basescene)
 
-function huoshenshanscene:onEnterScene()
+function laoshouchunscene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
-        local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "火神山", 
+        local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "老手村", 
                                                         sVersion = "V2020.5.8", color = g_color.SECURITY});
         local e_gametitle = gametitle:new({c_title});
 
