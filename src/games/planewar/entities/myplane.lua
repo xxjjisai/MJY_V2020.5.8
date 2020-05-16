@@ -1,0 +1,1 @@
+_G.myplane = class('myplane',entity)
