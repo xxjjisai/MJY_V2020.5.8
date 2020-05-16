@@ -49,7 +49,7 @@ function gamescene:onEnterScene()
 
         local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
         btn_help:SetPositionCenter(0,230);
-        btn_help:SetText("老手村");
+        btn_help:SetText("新手村");
         btn_help:SetData("Oper", "onClick", function ()
             scenemgr:getInstance():switchScene("xinshouchunscene");
         end)
