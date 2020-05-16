@@ -15,10 +15,12 @@ function resmgr:start(callback)
         callback();
     end  
 
-    local curResImageCfg = resimagecfg;
+    local curResImageCfg = _G[g_project.CUR_PROJECT_RES_CONFIG_PATH].resimagecfg;
+    local curResFontsCfg = _G[g_project.CUR_PROJECT_RES_CONFIG_PATH].resfontcfg;
+    local curResSoundCfg = _G[g_project.CUR_PROJECT_RES_CONFIG_PATH].ressoundcfg;
 
     -- 字体资源
-    local tbFont = resfontcfg or {};
+    local tbFont = curResFontsCfg or {};
     if not next(tbFont) then 
         self:trace(1,"Not Find Font");
     else
@@ -37,7 +39,7 @@ function resmgr:start(callback)
         end 
     end
     -- 声音资源
-    local tbSound = ressoundcfg or {};
+    local tbSound = curResSoundCfg or {};
     if not next(tbSound) then 
         self:trace(1,"Not Find Sound");
     else
@@ -52,7 +54,7 @@ function resmgr:start(callback)
     end
 
     -- 贴图资源
-    local tbImage = resimagecfg or {};
+    local tbImage = curResImageCfg or {};
     tbImage = tbImage or {};
     if not next(tbImage) then 
         self:trace(1,"Not Find Image");

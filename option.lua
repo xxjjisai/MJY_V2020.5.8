@@ -1,46 +1,47 @@
 _G.g_option = 
 {
-    DEBUG = 2;
-    LOG = 0;
-    SPLASH = 1;
-    SPLASH_SPEED = 1;
-    LOADED_RES = 0;
-    GAME_STATE = 0;
+    DEBUG = 2; -- 调试模式
+    LOG = 0; -- 生成文件日志
+    SPLASH = 1; -- 是否播放闪屏
+    SPLASH_SPEED = 1; -- 闪屏速度
+    LOADED_RES = 0; -- 加载资源
+    GAME_STATE = 0; -- 游戏状态 
 }
 
 _G.g_tbLayer = 
 {
-    SKY = 101;
+    SKY = 101; -- 最上层
     HUMAN = 201;
     HUMAN_DOWN = 202;
     GROUND_UP = 203;
-    GROUND = 301;
+    GROUND = 301; -- 最下层
 }
 
 _G.g_project = 
 {
-    CUR_PROJECT_NAME = "demo1",
-    CUR_PROJECT_TYPE = "roguelike", -- roguelike,
-    CUR_PROJECT_MAINSCENE = "mainscene",
-    CUR_PROJECT_SCENE_TRANSITION_TIME = 1, 
+    CUR_PROJECT_NAME = "demo1", -- 当前项目工程名称
+    CUR_PROJECT_TYPE = "roguelike", -- 当前项目工程游戏类型，用来区别摄像机类型 (roguelike,...)
+    CUR_PROJECT_MAINSCENE = "mainscene", -- 当前项目工程主场景名称
+    CUR_PROJECT_SCENE_TRANSITION_TIME = 1, -- 当前项目工程场景过渡时长
+    CUR_PROJECT_RES_CONFIG_PATH = 'resconfig', -- 当前项目工程资源配置表名称
 }
 
 _G.g_color = 
 {
-    WHITE = {1,1,1,1};
-    RED = {1,0,0,1};
-    GREEN = {0,1,0,1};
-    BLUE = {0,0,1,1};
-    PURPLE = {1,0,1,1};
+    WHITE = {1,1,1,1}; -- 白色
+    RED = {1,0,0,1}; -- 红色
+    GREEN = {0,1,0,1}; -- 绿色
+    BLUE = {0,0,1,1}; -- 蓝色
+    PURPLE = {1,0,1,1}; -- 紫色
     SECURITY = {1,1,1,0.15}; -- 防伪Logo
 }
 
 _G.g_gamestate = 
 {
-    LOAD_RES = 1;
-    PLAY_SPLASH = 2;
-    MAIN_SCENE = 3;
-    GAME_SCENE = 4;
-    OVER_SCENE = 5;
-    PAUSE_SCENE = 6;
+    LOAD_RES = 1; -- 加载资源
+    PLAY_SPLASH = 2; -- 播放闪屏
+    MAIN_SCENE = 3; -- 主场景
+    GAME_SCENE = 4; -- 游戏场景
+    OVER_SCENE = 5; -- 结束场景
+    PAUSE_SCENE = 6; -- 暂停场景
 }
