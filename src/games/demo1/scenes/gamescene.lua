@@ -9,12 +9,15 @@ function gamescene:onEnterScene()
 
         -------------------------------------------------------------------------------------------------
 
+        cameramgr:getInstance():SetCameraStyle("PLATFORMER",0.9,1);
+
         for i=1,1000 do
             local randomNum = math.random();
             local c_position_1 = position:new({ x = math.random(1,960), y = math.random(1,640) });
             local c_direction_1 = direction:new({ x = 1, y = 1 });
+            local c_randomtime_1 = randomtime:new({ nProgNum = 199, nJianGe = math.random(100,300)});
             local c_size_1 = size:new({ w = math.random(10,30), h = math.random(10,30) });
-            local c_speed_1 = speed:new({speed = math.random(5,10) });
+            local c_speed_1 = speed:new({speed = math.random(50,70) }); 
             local c_sortorder_1 = sortorder:new({nLayerIndex = g_tbLayer.HUMAN});
             local c_animaterender_1 = animaterender:new({
                 order = 1, 
@@ -37,7 +40,7 @@ function gamescene:onEnterScene()
                 shapeType = "rectangle",
                 fillType = "line"
             });
-            local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1,c_direction_1});
+            local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1,c_direction_1,c_randomtime_1});
             cameramgr:getInstance():SetFollowPlayer(e_hero1);
         end
 

@@ -10,6 +10,7 @@ _G.enter =
         "title",
         "sortorder",
         "direction",
+        "randomtime",
     };
     
     configs = 

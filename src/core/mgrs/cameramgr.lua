@@ -1,26 +1,17 @@
 _G.cameramgr = class("cameramgr",manager)
 
 function cameramgr:create()
-    self.sFollowPlayer = "Player";
     self.iFollowPlayer = nil;
-    self.tbOrigin = {x=0,y=0,scale=1}
 end
 
 function cameramgr:SetCameraStyle(Camera_Follow_Lerp,Camera_Follow_Style,scale)
     camera:setFollowLerp(Camera_Follow_Lerp);
     camera:setFollowStyle(Camera_Follow_Style);
-    self.tbOrigin.x = camera.screen_x;
-    self.tbOrigin.y = camera.screen_y;
     camera.scale = scale or 1;
-    self.tbOrigin.scale = camera.scale;
 end
 
 function cameramgr:SetFollowPlayer(iTargetEnt)
     self.iFollowPlayer = iTargetEnt;
-end
-
-function cameramgr:RestCameraToOrigin()
-    camera:follow(self.tbOrigin.x, self.tbOrigin.y); 
 end
 
 function cameramgr:update(dt)

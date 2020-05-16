@@ -13,6 +13,7 @@ end
 
 function basescene:initCamera()
     camera:follow(W/2,H/2);
+    camera.scale = 1;
 end
 
 function basescene:create()

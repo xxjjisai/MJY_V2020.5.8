@@ -11,28 +11,28 @@ _G.timer      = require('libs/Timer')();
 _G.bump       = require('libs/bump');
 _G.bump_debug = require('libs/bump_debug');
 
-require('src/core/base/baseorigin')
-require('src/core/base/baseclass')
-require('src/core/base/baseevent')
-require('src/core/base/manager')
-require('src/core/base/basescene')
-require('src/core/base/baseui')
-require('src/core/base/baseworld')
-require('src/core/base/component')
-require('src/core/base/entity')
-require('src/core/base/system')
+require('src/core/base/baseorigin');
+require('src/core/base/baseclass');
+require('src/core/base/baseevent');
+require('src/core/base/manager');
+require('src/core/base/basescene');
+require('src/core/base/baseui');
+require('src/core/base/baseworld');
+require('src/core/base/component');
+require('src/core/base/entity');
+require('src/core/base/system');
 
-require('src/core/mgrs/resmgr')
-require('src/core/mgrs/splashmgr')
-require('src/core/mgrs/gamemgr')
-require('src/core/mgrs/scenemgr')
-require('src/core/mgrs/uimgr')
-require('src/core/mgrs/inputmgr')
-require('src/core/mgrs/cameramgr')
+require('src/core/mgrs/resmgr');
+require('src/core/mgrs/splashmgr');
+require('src/core/mgrs/gamemgr');
+require('src/core/mgrs/scenemgr');
+require('src/core/mgrs/uimgr');
+require('src/core/mgrs/inputmgr');
+require('src/core/mgrs/cameramgr');
 
-require('src/core/uis/shapebutton')
+require('src/core/uis/shapebutton');
 
-require('src/games/start')
+require('src/games/start');
 
 function love.load()
 	gamemgr:getInstance():create();
@@ -47,11 +47,11 @@ function love.draw()
 end
 
 function love.mousepressed(x,y,button)
-    inputmgr:getInstance():mousepressed(x,y,button)
+    inputmgr:getInstance():mousepressed(x,y,button);
 end
 
 function love.keypressed(key)
-    inputmgr:getInstance():keypressed(key)
+    inputmgr:getInstance():keypressed(key);
 end
 
 function love.run()
