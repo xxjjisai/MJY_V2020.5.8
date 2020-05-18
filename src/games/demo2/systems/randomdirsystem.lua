@@ -30,7 +30,6 @@ function randomdirsystem:StepHandler(iTargetEnt)
         [6] = { x = -1, y = 0  },
         [7] = { x = 0,  y = 1  },
         [8] = { x = 0,  y = -1 },
-        [9] = { x = 0,  y = 0 },
     }
     local randomIdx = math.random(1,#tbRendomDir);
     local c_position = iTargetEnt:getComponent("position");

@@ -41,7 +41,7 @@ function gamescene:onEnterScene()
                 fillType = "line"
             });
             local e_hero1 = hero:new({c_position_1,c_size_1,c_shaperender_1,c_speed_1,c_animaterender_1,c_sortorder_1,c_direction_1,c_randomtime_1});
-            -- cameramgr:getInstance():SetFollowPlayer(e_hero1);
+            cameramgr:getInstance():SetFollowPlayer(e_hero1);
         end
 
         local s_welceomsystem = welceomsystem:new();
