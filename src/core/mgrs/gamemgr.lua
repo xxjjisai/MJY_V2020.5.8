@@ -64,7 +64,7 @@ function gamemgr:draw()
 		uimgr:getInstance():draw();
 	end
 	
-	if g_option.DEBUG == 2 then 
+	if g_option.DEBUG >= 2 then 
 		local font = resmgr:getInstance():GetFont(18);
 		love.graphics.setFont(font);
 		love.graphics.setColor(g_color.GREEN);

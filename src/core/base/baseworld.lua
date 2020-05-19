@@ -22,6 +22,15 @@ function baseworld:addEntity(iEnt)
     self.tbEntitiesList[sEntName] = iEnt;
 end
 
+function baseworld:getEntity(id)
+    for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
+        if tmp_iEnt.id == id then 
+            return tmp_iEnt;
+        end 
+    end
+    return nil;
+end
+
 function baseworld:removeEntity(iEnt)
     for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
         if tmp_iEnt.id == iEnt.id then 
@@ -154,5 +163,7 @@ function baseworld:sortDrawIndex(tbEntList)
                 end 
             end
         end)
+    elseif g_project.CUR_PROJECT_TYPE == "platform" then 
+        -- ...todo
     end
 end

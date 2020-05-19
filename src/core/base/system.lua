@@ -76,11 +76,15 @@ function system:onExitScene()
 end
 
 function system:onDraw()
-
+    -- for i,iTargetEnt in ipairs(self:getTargets()) do 
+    --     -- todo ...
+    -- end
 end
 
 function system:onUpdate(dt)
-
+    -- for i,iTargetEnt in ipairs(self:getTargets()) do 
+    --     -- todo ...
+    -- end
 end
 
 function system:getSystem(sClassName)

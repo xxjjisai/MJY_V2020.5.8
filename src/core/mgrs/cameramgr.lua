@@ -18,7 +18,7 @@ function cameramgr:update(dt)
     -- 移动镜头 鼠标方式
     -- if option.bCamera_MouseMove then 
     --     if option.bMouse_Move then 
-    --         local mx,my = cameramgr:GetMousePosition();
+    --         local mx,my = cameramgr:getInstance():GetMousePosition();
     --         camera:follow(mx, my); 
     --     end
     -- end

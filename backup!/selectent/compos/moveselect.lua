@@ -1,0 +1,1 @@
+_G.moveselect = class('moveselect',component)
