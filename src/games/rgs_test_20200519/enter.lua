@@ -11,17 +11,21 @@ _G.enter =
         "sortorder",
         "direction",
         "randomtime",
+        "wasdmove",
+        "editor",
     };
     
     configs = 
     {
         "resconfig",
+        "colorconfig",
     };
 
     entities = 
     {
         "gametitle",
         "hero",
+        "tile",
     };
 
     scenes = 
@@ -38,5 +42,7 @@ _G.enter =
         "welceomsystem",
         "animationsystem",
         "randomdirsystem",
+        "wasdmovesystem",
+        "editorsystem",
     };
 }

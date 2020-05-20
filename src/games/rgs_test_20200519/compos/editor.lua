@@ -1,0 +1,1 @@
+_G.editor = class('editor',component)

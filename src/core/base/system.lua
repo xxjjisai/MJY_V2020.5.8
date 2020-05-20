@@ -75,6 +75,14 @@ function system:onExitScene()
 
 end
 
+function system:mousepressed(x,y,button)
+
+end
+
+function system:keypressed(key)
+
+end
+
 function system:onDraw()
     -- for i,iTargetEnt in ipairs(self:getTargets()) do 
     --     -- todo ...

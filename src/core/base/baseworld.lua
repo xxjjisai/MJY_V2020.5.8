@@ -157,13 +157,31 @@ function baseworld:sortDrawIndex(tbEntList)
                         return ay < by;
                     elseif a_nLayerIndex == g_tbLayer.GROUND and b_nLayerIndex == g_tbLayer.GROUND then
                         return ay < by;
-                    else 
-                        return ay < by;
+                    else
+                        return a_nLayerIndex > b_nLayerIndex;
                     end
                 end 
             end
         end)
     elseif g_project.CUR_PROJECT_TYPE == "platform" then 
         -- ...todo
+    end
+end
+
+
+function baseworld:mousepressed(x,y,button)
+    for _,iSys in pairs(self.tbSystemList) do 
+        if iSys.mousepressed then 
+            -- self:trace(1,"-====== baseworld:mousepresse =======")
+            iSys:mousepressed(x,y,button);
+        end 
+    end 
+end
+
+function baseworld:keypressed(key)
+    for _,iSys in pairs(self.tbSystemList) do 
+        if iSys.keypressed then 
+            iSys:keypressed(key);
+        end 
     end
 end

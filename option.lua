@@ -33,7 +33,7 @@ _G.g_color =
     GREEN = {0,1,0,1}; -- 绿色
     BLUE = {0,0,1,1}; -- 蓝色
     PURPLE = {1,0,1,1}; -- 紫色
-    SECURITY = {1,1,1,0.15}; -- 防伪Logo
+    SECURITY = {1,1,1,0.05}; -- 防伪Logo
 }
 
 _G.g_gamestate = 
