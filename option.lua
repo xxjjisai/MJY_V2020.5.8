@@ -10,10 +10,10 @@ _G.g_option =
 
 _G.g_tbLayer = 
 {
-    SKY = 101; -- 最上层
-    HUMAN = 201;
-    HUMAN_DOWN = 202;
-    GROUND_UP = 203;
+    SKY = 101; -- 最上层（天空等）
+    HUMAN = 201; -- 各类实体
+    HUMAN_DOWN = 202; -- 道具等
+    GROUND_UP = 203; -- 地面植物
     GROUND = 301; -- 最下层
 }
 
