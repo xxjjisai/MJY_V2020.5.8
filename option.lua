@@ -24,6 +24,9 @@ _G.g_project =
     CUR_PROJECT_MAINSCENE = "mainscene", -- 当前项目工程主场景名称
     CUR_PROJECT_SCENE_TRANSITION_TIME = 1, -- 当前项目工程场景过渡时长
     CUR_PROJECT_RES_CONFIG_PATH = 'resconfig', -- 当前项目工程资源配置表名称
+    CUR_PROJECT_CAMERA_FOLLOWLERP = 0.01, -- 当前项目工程摄像机跟随插值
+    CUR_PROJECT_CAMERA_FOLLOWSTYLE = 'LOCKON', -- 当前项目工程摄像机跟随类型
+    CUR_PROJECT_CAMERA_SCALE = 1, -- 当前项目工程摄像机缩放倍数
 }
 
 _G.g_color = 

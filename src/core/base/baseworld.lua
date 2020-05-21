@@ -172,7 +172,6 @@ end
 function baseworld:mousepressed(x,y,button)
     for _,iSys in pairs(self.tbSystemList) do 
         if iSys.mousepressed then 
-            -- self:trace(1,"-====== baseworld:mousepresse =======")
             iSys:mousepressed(x,y,button);
         end 
     end 

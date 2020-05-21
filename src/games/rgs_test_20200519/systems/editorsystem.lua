@@ -13,7 +13,7 @@ function editorsystem:mousepressed(x,y,button)
         local nECol = math.floor(c_position:getAttribute('x')/32);
         local nERow = math.floor(c_position:getAttribute('y')/32);
         if nMCol == nECol and nMRow == nERow then 
-            iTargetEnt:getComponent("shaperender"):addAttribute("color", colorconfig.GRASS );
+            iTargetEnt:getComponent("shaperender"):addAttribute("color", colorconfig.MAP_TILE_SIDE );
         end
     end 
 end

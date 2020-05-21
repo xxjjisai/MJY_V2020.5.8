@@ -9,7 +9,7 @@ function gamescene:onEnterScene()
 
         -------------------------------------------------------------------------------------------------
 
-        cameramgr:getInstance():SetCameraStyle("LOCKON",0.09,1);
+        cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
 
         for i=1,1000 do
             local randomNum = math.random();

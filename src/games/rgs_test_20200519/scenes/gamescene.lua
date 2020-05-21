@@ -9,14 +9,15 @@ function gamescene:onEnterScene()
         local s_welceomsystem = welceomsystem:new();
         -------------------------------------------------------------------------------------------------
 
-        cameramgr:getInstance():SetCameraStyle("LOCKON",0.09,1);
+        cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
+        g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
 
-        for i = 1, 30 do 
-            for j = 1, 30 do 
+        for i = 1, 40 do 
+            for j = 1, 40 do 
                 local maptile = self:CreateMapTile();
-                maptile:getComponent("position"):addAttribute("x",(j - 1) * 33);
-                maptile:getComponent("position"):addAttribute("y",(i - 1) * 33);
-                if i == 1 or j == 1 or i == 30 or j == 30 then 
+                maptile:getComponent("position"):addAttribute("x",(j - 1) * 32);
+                maptile:getComponent("position"):addAttribute("y",(i - 1) * 32);
+                if i == 1 or j == 1 or i == 40 or j == 40 then 
                     maptile:getComponent("shaperender"):addAttribute("color", colorconfig.MAP_TILE_SIDE );
                 end
             end 
@@ -25,8 +26,8 @@ function gamescene:onEnterScene()
         local hero_he   = self:CreateHeroHe();
         local hero_he_2 = self:CreateHeroHe();
         hero_he_2:removeComponent("wasdmove");
-        hero_he_2:getComponent("position"):addAttribute("x", 33 * 8 );
-        hero_he_2:getComponent("position"):addAttribute("y", 33 * 8 );
+        hero_he_2:getComponent("position"):addAttribute("x", 32 * 8 );
+        hero_he_2:getComponent("position"):addAttribute("y", 32 * 8 );
         hero_he_2:getComponent("shaperender"):addAttribute("color", {1,1,0,1} );
 
         local s_drawshapesystem = drawshapesystem:new();
