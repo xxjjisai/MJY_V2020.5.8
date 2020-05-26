@@ -117,6 +117,16 @@ _G.API =
 				local e_gametitle = gametitle:new({c_title});
 			
 				local s_welceomsystem = welceomsystem:new();
+				local s_wasdmovesystem = wasdmovesystem:new();
+
+				cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
+				g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
+
+				-- cameramgr:getInstance():SetFollowPlayer(hero_he);
+
+				scenemgr:getInstance():startupSystem(0.1,function ()
+					s_wasdmovesystem:startup();
+				end)
 			
 				local btn_enter = uimgr:getInstance():create("shapebutton","btn_enter");
 				btn_enter:SetPositionCenter(0,130);
