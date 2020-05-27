@@ -2,15 +2,7 @@ _G.enter =
 {
     compos = 
     {
-        "position",
-        "animaterender",
-        "shaperender",
-        "size",
-        "speed",
-        "title",
-        "sortorder",
-        "direction",
-        "randomtime",
+
     };
     
     configs = 
@@ -33,10 +25,6 @@ _G.enter =
 
     systems = 
     {
-        "drawshapesystem",
-        "moveshapesystem",
-        "welceomsystem",
-        "animationsystem",
-        "randomdirsystem",
+
     };
 }

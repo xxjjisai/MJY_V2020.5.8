@@ -175,6 +175,9 @@ end
 
 
 function baseworld:mousepressed(x,y,button)
+    if self.tbSystemList == nil then 
+        return
+    end
     for _,iSys in pairs(self.tbSystemList) do 
         if iSys.mousepressed then 
             iSys:mousepressed(x,y,button);
@@ -183,6 +186,9 @@ function baseworld:mousepressed(x,y,button)
 end
 
 function baseworld:keypressed(key)
+    if self.tbSystemList == nil then 
+        return
+    end
     for _,iSys in pairs(self.tbSystemList) do 
         if iSys.keypressed then 
             iSys:keypressed(key);

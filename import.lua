@@ -1,6 +1,17 @@
 local function new(filename) 
     local maindir = "src/games/"
     local prodir = string.format("%s%s",maindir,filename);
+    ----------------------------------------
+    local common_compos = g_CommonScript.compos;
+    for _,cls in ipairs(common_compos) do 
+        require("src/core/common/compos/"..cls);
+    end
+    ----------------------------------------
+    local common_systems = g_CommonScript.systems;
+    for _,cls in ipairs(common_systems) do 
+        require("src/core/common/systems/"..cls);
+    end
+    ----------------------------------------
     require(prodir.."/enter")
     local enter_dir = prodir.."/";
     ----------------------------------------

@@ -9,7 +9,5 @@ function gamescene:onEnterScene()
         local s_welceomsystem = welceomsystem:new();
         -------------------------------------------------------------------------------------------------
 
-        
-
     end)
 end

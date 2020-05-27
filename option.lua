@@ -29,6 +29,26 @@ _G.g_project =
     CUR_PROJECT_CAMERA_SCALE = 1, -- 当前项目工程摄像机缩放倍数
 }
 
+_G.g_CommonScript = 
+{
+    compos = 
+    {
+        'position',
+        'animaterender',
+        'shaperender',
+        'size',
+        'sortorder',
+        'title',
+    };
+    
+    systems = 
+    {
+        'animationsystem',
+        'drawshapesystem',
+        'welceomsystem',
+    };
+}
+
 _G.g_color = 
 {
     WHITE = {1,1,1,1}; -- 白色
@@ -36,7 +56,7 @@ _G.g_color =
     GREEN = {0,1,0,1}; -- 绿色
     BLUE = {0,0,1,1}; -- 蓝色
     PURPLE = {1,0,1,1}; -- 紫色
-    SECURITY = {1,1,1,0.05}; -- 防伪Logo
+    SECURITY = {1,1,1,0.1}; -- 防伪Logo
 }
 
 _G.g_gamestate = 
