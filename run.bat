@@ -1,1 +1,1 @@
-"E:\RGSNebula\LOVE_PROJECT\LOVE11.1\LOVE\love.exe" "%cd%"
+"D:\Game\KAI\MJY_V2020.5.8\engine\love.exe" "%cd%"
