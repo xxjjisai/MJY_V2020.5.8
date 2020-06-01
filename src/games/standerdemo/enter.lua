@@ -21,6 +21,7 @@ _G.enter =
         "mainscene",
         "welcomescene",
         "gamescene",
+        "testscene",
     };
 
     systems = 

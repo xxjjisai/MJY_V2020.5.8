@@ -151,20 +151,7 @@ function baseworld:sortDrawIndex(tbEntList)
                         return ay < by;
                     else 
                         return a_nLayerIndex > b_nLayerIndex;
-                    end 
-                    -- if a_nLayerIndex == g_tbLayer.HUMAN and b_nLayerIndex == g_tbLayer.HUMAN then
-                    --     return ay < by;
-                    -- elseif a_nLayerIndex == g_tbLayer.HUMAN_DOWN and b_nLayerIndex == g_tbLayer.HUMAN_DOWN then
-                    --     return ay < by;
-                    -- elseif a_nLayerIndex == g_tbLayer.GROUND_UP and b_nLayerIndex == g_tbLayer.GROUND_UP then
-                    --     return ay < by;
-                    -- elseif a_nLayerIndex == g_tbLayer.SKY and b_nLayerIndex == g_tbLayer.SKY then
-                    --     return ay < by;
-                    -- elseif a_nLayerIndex == g_tbLayer.GROUND and b_nLayerIndex == g_tbLayer.GROUND then
-                    --     return ay < by;
-                    -- else
-                    --     return a_nLayerIndex > b_nLayerIndex;
-                    -- end
+                    end
                 end 
             end
         end)

@@ -14,7 +14,7 @@ function gamescene:onEnterScene()
         cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
 				g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
 
-        local padding = 4;
+        local padding = 1;
         local tile_w = 32;
         local tile_h = 25;
 
@@ -29,7 +29,9 @@ function gamescene:onEnterScene()
                     fillType = "line"
                 });
                 local e_hero = hero:new({ c_position,c_size,c_shaperender });
-                cameramgr:getInstance():SetFollowPlayer(e_hero);
+                if i == 5 and j == 5 then 
+                    cameramgr:getInstance():SetFollowPlayer(e_hero);
+                end
             end 
         end 
 

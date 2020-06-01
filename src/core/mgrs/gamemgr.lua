@@ -6,7 +6,7 @@ function gamemgr:create()
     love.graphics.present();
     love.graphics.setDefaultFilter('nearest', 'nearest', 1);
     love.graphics.setLineStyle('smooth');
-	W, H, flags = love.window.getMode( )
+	_G.W, _G.H, _G.flags = love.window.getMode( )
 	_G.windows = { w = W, h = H };
 	g_option.GAME_STATE = g_gamestate.LOAD_RES;
 	resmgr:getInstance():create();

@@ -15,7 +15,7 @@ function welcomescene:onEnterScene()
         btn_enter:SetPositionCenter(0,130);
         btn_enter:SetText("开始");
         btn_enter:SetData("Oper", "onClick", function ()
-            scenemgr:getInstance():switchScene("gamescene");
+            scenemgr:getInstance():switchScene("testscene");
         end)
     end)
 end
