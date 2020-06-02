@@ -1,7 +1,7 @@
 
 _G.class = require('libs/middleclass')
 
-require('option')
+require('src/option')
 
 require('libs/utils')
 _G.loader     = require('libs/love-loader');

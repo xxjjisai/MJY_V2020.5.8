@@ -1,1 +1,1 @@
-require('import')(g_project.CUR_PROJECT_NAME);
+require('src/import')(g_project.CUR_PROJECT_NAME);
