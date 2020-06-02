@@ -12,12 +12,24 @@ function testscene:onEnterScene()
         cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
                 g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
         -------------------------------------------------------------------------------------------------
-        local c__hero_position = position:new({ x = 300, y = 300 });
-        local c__hero_size = size:new({ w = 32, h = 32 });
-        local c__hero_shaperender = shaperender:new({ color = g_color.GREEN, drawType="shape",shapeType = "rectangle", 
-                                                            fillType = "line" });
+        local c_hero_position = position:new({ x = 300, y = 300 });
+        local c_hero_size = size:new({ w = 32, h = 32 });
+        local c_hero_shaperender = shaperender:new({ color = g_color.GREEN, drawType="shape",shapeType = "rectangle", 
+                                                            fillType = "fill" });
         -------------------------------------------------------------------------------------------------
-        local e_hero = hero:new({ c__hero_position,c__hero_size,c__hero_shaperender });
+        local c_enemy_position = position:new({ x = 400, y = 300 });
+        local c_enemy_size = size:new({ w = 32, h = 32 });
+        local c_enemy_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
+                                                            fillType = "fill" });
+        -------------------------------------------------------------------------------------------------
+        local c_enemy_position_2 = position:new({ x = 200, y = 300 });
+        local c_enemy_size_2 = size:new({ w = 32, h = 32 });
+        local c_enemy_shaperender_2 = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
+                                                            fillType = "fill" });
+        -------------------------------------------------------------------------------------------------
+        local e_hero = hero:new({ c_hero_position,c_hero_size,c_hero_shaperender });
+        local e_enemy_1 = enemy:new({ c_enemy_position,c_enemy_size,c_enemy_shaperender });
+        local e_enemy_2 = enemy:new({ c_enemy_position_2,c_enemy_size_2,c_enemy_shaperender_2 });
         -------------------------------------------------------------------------------------------------
         cameramgr:getInstance():SetFollowPlayer(e_hero);
         -------------------------------------------------------------------------------------------------

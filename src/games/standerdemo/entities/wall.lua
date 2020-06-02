@@ -1,0 +1,1 @@
+_G.wall = class('wall',entity)

@@ -31,9 +31,9 @@ function baseworld:getEntity(id)
     return nil;
 end
 
-function baseworld:removeEntity(iEnt)
+function baseworld:removeEntity(id)
     for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
-        if tmp_iEnt.id == iEnt.id then 
+        if tmp_iEnt.id == id then 
             tmp_iEnt:destory();
             tmp_iEnt = nil;
         end 

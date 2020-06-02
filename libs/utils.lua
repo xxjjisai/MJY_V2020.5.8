@@ -1,4 +1,4 @@
--- Åö×²¼ì²â£¨Ô­ÐÎ£©
+-- ï¿½ï¿½×²ï¿½ï¿½â£¨Ô­ï¿½Î£ï¿½
 function hitTestObject(obj1,obj2)
     if obj1 == nil or obj2 == nil then return false end 
 	if obj1.x + obj1.w > obj2.x and obj1.x < obj2.x + obj2.w and
@@ -14,7 +14,7 @@ function GetTime()
     return os.clock();
 end
 
--- Åö×²¼ì²â£¨Ô­ÐÎ£©
+-- ï¿½ï¿½×²ï¿½ï¿½â£¨Ô­ï¿½Î£ï¿½
 function TestCollision(a,b)
     if a == nil or b == nil then return false end; 
 
@@ -58,7 +58,7 @@ function TestCollision(a,b)
     return false;
 end 
 
--- ·ÖÀëÖá¶¨Àí¼ì²â»ù±¾¾ØÐÎ£¨·ÇÐý×ª£©
+-- ï¿½ï¿½ï¿½ï¿½ï¿½á¶¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½
 function SatTestCollision(a,b)
     local tbA = {};
     tbA[1] = a.y;
@@ -86,7 +86,7 @@ function SatTestCollision(a,b)
     local min_b = tbB[1];
     local max_b = tbB[#tbB];
 
-    -- todo Ã»Ð´Íê
+    -- todo Ã»Ð´ï¿½ï¿½
 end 
 
 function MathRound(value)
@@ -111,7 +111,7 @@ function string_split(str, split_char)
 end
 
 -- print++
-function trace(data,cstring,deepIndex)  --µÚ¶þ¸ö²ÎÊý¿ÉÒÔÎª¿Õ£¬µÚÈý¸ö²ÎÊý²»ÒªÊÖ¶¯Ìí¼Ó£¬ËüÊÇÓÃÀ´½øÐÐ´òÓ¡Éî¶È¿ØÖÆµÄ¡£
+function trace(data,cstring,deepIndex)  --ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ö¶ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½Ó¡ï¿½ï¿½È¿ï¿½ï¿½ÆµÄ¡ï¿½
     if data == nil then   
         print("core.print data is nil");  
     end
@@ -128,7 +128,7 @@ function trace(data,cstring,deepIndex)  --µÚ¶þ¸ö²ÎÊý¿ÉÒÔÎª¿Õ£¬µÚÈý¸ö²ÎÊý²»ÒªÊÖ¶¯
 
                 if(type(v)=="table") then
 
-                if (deepIndex + 1) < 5 then  --5¾ÍÊÇ¿ØÖÆµÄ´òÓ¡Éî¶È(Äã¿ÉÒÔ¸ù¾ÝÐèÒªµ÷Õû)£¬ÒÔ·ÀÊý¾Ý½á¹¹ÖÐ´æÔÚÑ­»·ÒûÓÃ(±ðÒÔÎª²»¿ÉÄÜ£¬ÎÒ¾ÍÓöµ½¹ý)
+                if (deepIndex + 1) < 5 then  --5ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ÆµÄ´ï¿½Ó¡ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½Ð´ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½Ò¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
                     trace(v,cs,(deepIndex+1));
                 else
                     print("\t"..cs.." {"..tostring(v).."}\n");
@@ -230,7 +230,7 @@ function pointdistance(p1,p2)
 	return length
 end
 
--- ????????§Ö??????????????????????????
+-- ????????ï¿½ï¿½??????????????????????????
 --http:--www.tuicool.com/articles/mY7Rzi
 -- for k, v in pairs( remove ) do
     -- removeItem(test, k)
@@ -261,12 +261,12 @@ function deleteItem(list,id)
 	end
 end
 
--- Ëæ»ú´ÓÄ³¸öÊý×éÖÐ»ñÈ¡ÔªËØ
+-- ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡Ôªï¿½ï¿½
 function getRandom(arr)
 	return arr[math.floor(math.random(1,#arr))]
 end
 
--- Ëæ»úÅÅÐò
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 --http:--blog.csdn.net/zcl1804742527/article/details/52317399
 function i3k_shuffle(tbl)
     local n = #tbl
@@ -278,7 +278,7 @@ function i3k_shuffle(tbl)
     end
 end
 
--- »ñÈ¡×î´óÖµ
+-- ï¿½ï¿½È¡ï¿½ï¿½ï¿½Öµ
 function table_maxn(t)
     local mn = 0
     for k, v in pairs(t) do
@@ -289,9 +289,9 @@ function table_maxn(t)
     return mn
 end
 
--- ¶þ·Ö·¨²éÕÒ ·µ»Øtrue or false ÓÐÎÊÌâ Ö»ÄÜ²éÕÒµÚÒ»¸ö
--- t -- ÓÐÐòÊý×é
--- v -- t ÖÐµÄÄ³¸öÖµ
+-- ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½true or false ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ö»ï¿½Ü²ï¿½ï¿½Òµï¿½Ò»ï¿½ï¿½
+-- t -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- v -- t ï¿½Ðµï¿½Ä³ï¿½ï¿½Öµ
 function BinarySearch(tbArr,val)
 	local count = #tbArr;
 	local low = 1;
@@ -309,7 +309,7 @@ function BinarySearch(tbArr,val)
 	return -1;
 end
 
--- ´òÓ¡Ò»¸ötable
+-- ï¿½ï¿½Ó¡Ò»ï¿½ï¿½table
 function print_lua_table (lua_table, indent,pfn)
   if pfn == nil then
     pfn = print
@@ -349,7 +349,7 @@ function print_lua_table (lua_table, indent,pfn)
   end
 end
 
--- È¥³ýÖØ¸´ÔªËØ
+-- È¥ï¿½ï¿½ï¿½Ø¸ï¿½Ôªï¿½ï¿½
 -- http://blog.csdn.net/mobiledreamworks/article/details/47613953
 function removeRepeatElementFromArray(list)
     local count = 0;
@@ -373,10 +373,10 @@ function removeRepeatElementFromArray(list)
     return newArray;
 end 
 
--- ¶þ·Ö·¨²éÕÒ(ÓÐ¸Ä¶¯)
+-- ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ð¸Ä¶ï¿½)
 -- http://blog.csdn.net/mobiledreamworks/article/details/47613953
 --[[
-    ÓÃ·¨£º
+    ï¿½Ã·ï¿½ï¿½ï¿½
     local heights = {180,100,1000,1021,102,103,302};
     table.sort(heights);
 ]]
@@ -397,7 +397,7 @@ function binarySearch(srcArray,des)
     end 
 end
 
--- Ã°ÅÝÅÅÐò
+-- Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -- http://blog.csdn.net/mobiledreamworks/article/details/47613953
 -- local heights = {180,100,1000,1021,102,103,302};
 function bubbleSort(array)
@@ -414,20 +414,20 @@ function bubbleSort(array)
     return array;
 end  
 --[[
--- Éî¶È¿ËÂ¡Ò»¸öÖµ
+-- ï¿½ï¿½È¿ï¿½Â¡Ò»ï¿½ï¿½Öµ
 -- example:
--- 1. t2ÊÇt1Ó¦ÓÃ,ÐÞ¸Ät2Ê±£¬t1»á¸ú×Å¸Ä±ä
+-- 1. t2ï¿½ï¿½t1Ó¦ï¿½ï¿½,ï¿½Þ¸ï¿½t2Ê±ï¿½ï¿½t1ï¿½ï¿½ï¿½ï¿½Å¸Ä±ï¿½
     local t1 = { a = 1, b = 2, }
     local t2 = t1
-    t2.b = 3    -- t1 = { a = 1, b = 3, } == t1.b¸ú×Å¸Ä±ä
+    t2.b = 3    -- t1 = { a = 1, b = 3, } == t1.bï¿½ï¿½ï¿½Å¸Ä±ï¿½
     
--- 2. clone() ·µ»Øt1¸±±¾£¬ÐÞ¸Ät2,t1²»»á¸ú×Ù¸Ä±ä
+-- 2. clone() ï¿½ï¿½ï¿½ï¿½t1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½t2,t1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸Ä±ï¿½
     local t1 = { a = 1, b = 2 }
     local t2 = clone( t1 )
-    t2.b = 3    -- t1 = { a = 1, b = 3, } == t1.b²»¸ú×Å¸Ä±ä
+    t2.b = 3    -- t1 = { a = 1, b = 3, } == t1.bï¿½ï¿½ï¿½ï¿½ï¿½Å¸Ä±ï¿½
     
--- @param object Òª¿ËÂ¡µÄÖµ
--- @return objectCopy ·µ»ØÖµµÄ¸±±¾
+-- @param object Òªï¿½ï¿½Â¡ï¿½ï¿½Öµ
+-- @return objectCopy ï¿½ï¿½ï¿½ï¿½Öµï¿½Ä¸ï¿½ï¿½ï¿½
 --]]
 function clone( object )
     local lookup_table = {}
@@ -522,7 +522,7 @@ function table.show(t, name, indent)
 
  
 
--- ±¾ÎÄÀ´×Ô Îä¿­¿­ µÄCSDN ²©¿Í £¬È«ÎÄµØÖ·Çëµã»÷£ºhttps://blog.csdn.net/w18756901575/article/details/74982666?utm_source=copy 
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä¿­ï¿½ï¿½ ï¿½ï¿½CSDN ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È«ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½https://blog.csdn.net/w18756901575/article/details/74982666?utm_source=copy 
  function shuffle(t)
     math.randomseed(os.time())
     if type(t)~="table" then
@@ -601,7 +601,7 @@ function serialize (o)
     return  str_serialize
 end  
 
--- ³Ô¿÷µ¯ÐÔÖ¸Êý
+-- ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 function ChiKuiZhiShu(nZongShu,nChiKuiShu)
     if nChiKuiShu == 0 then 
         nChiKuiShu = 0.000000001;
@@ -639,7 +639,7 @@ function ColorTransformForLove11(r,g,b)
     return str
 end
 
--- Ëæ»ú²»ÖØ¸´
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½
 function random_table(t, num)
     for i,v in pairs(t) do
         local r = math.random(#t)
@@ -652,4 +652,22 @@ function random_table(t, num)
         t[i] = nil
     end
     return t
+end
+
+function table.unique(t, bArray)
+    local check = {}
+    local n = {}
+    local idx = 1
+    for k, v in pairs(t) do
+        if not check[v] then
+            if bArray then
+                n[idx] = v
+                idx = idx + 1
+            else
+                n[k] = v
+            end
+            check[v] = true
+        end
+    end
+    return n
 end

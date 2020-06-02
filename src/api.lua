@@ -49,8 +49,8 @@ _G.API =
 		-- print(table.show(e_hero1,"e_hero1"))
 		-- print(table.show(e_hero2,"e_hero2"))
 	
-		-- baseworld:getInstance():removeEntity(e_hero1);
-		-- baseworld:getInstance():removeEntity(e_hero2);
+		-- baseworld:getInstance():removeEntity(e_hero1.id);
+		-- baseworld:getInstance():removeEntity(e_hero2.id);
 	
 		-- for i = 1, 4500 do 
 		-- 	local c_position = position:new({ x = math.random(1,50000), y = math.random(1,50000)});

@@ -96,3 +96,8 @@ end
 function cameramgr:GetMousePosition()
     return camera:getMousePosition();
 end
+
+function cameramgr:SetDeadzone(x, y, w, h)
+    return camera:setDeadzone(x, y, w, h);
+end
+
