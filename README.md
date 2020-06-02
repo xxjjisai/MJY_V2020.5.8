@@ -37,6 +37,7 @@ function testscene:onEnterScene()
             s_drawshapesystem:startup();
         end)
         -------------------------------------------------------------------------------------------------
+        -- 创建UI
         local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
         btn_help:SetPositionCenter(0,130 + btn_help:GetData("Size", "h") + 5);
         btn_help:SetText("按钮");
