@@ -14,7 +14,8 @@ function testscene:onEnterScene()
         -------------------------------------------------------------------------------------------------
         local c__hero_position = position:new({ x = 300, y = 300 });
         local c__hero_size = size:new({ w = 32, h = 32 });
-        local c__hero_shaperender = shaperender:new({ color = g_color.GREEN, drawType="shape",shapeType = "rectangle", fillType = "line" });
+        local c__hero_shaperender = shaperender:new({ color = g_color.GREEN, drawType="shape",shapeType = "rectangle", 
+                                                            fillType = "line" });
         -------------------------------------------------------------------------------------------------
         local e_hero = hero:new({ c__hero_position,c__hero_size,c__hero_shaperender });
         -------------------------------------------------------------------------------------------------

@@ -1,1 +1,0 @@
-_G.gametitle = class('gametitle',entity)

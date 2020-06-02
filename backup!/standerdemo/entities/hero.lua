@@ -1,1 +1,0 @@
-_G.hero = class('hero',entity)
