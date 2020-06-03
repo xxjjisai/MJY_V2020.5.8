@@ -26,6 +26,9 @@ end
 
 function scenemgr:draw()
     cameramgr:getInstance():RenderAttach(function ()
+        if g_option.DEBUG >= 3 then 
+            bump_debug.draw(BumpWorld);
+        end
         _G[self.sSceneName]:getInstance():draw();
     end);
 end

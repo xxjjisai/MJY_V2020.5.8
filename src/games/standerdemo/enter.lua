@@ -10,7 +10,9 @@ _G.enter =
 {
     compos = 
     {
-        "wasdmove"
+        "moveshape",
+        "randomdir",
+        "wasdmove",
     };
     
     configs = 
@@ -25,6 +27,7 @@ _G.enter =
         "tile",
         "wall",
         "item",
+        "enemy",
     };
 
     scenes = 
@@ -37,6 +40,8 @@ _G.enter =
 
     systems = 
     {
-        "wasdmovesystem"
+        "moveshapesystem",
+        "randomdirsystem",
+        "wasdmovesystem",
     };
 }
