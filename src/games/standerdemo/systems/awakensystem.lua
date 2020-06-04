@@ -17,6 +17,7 @@ function awakensystem:StepHandler(iTargetEnt)
     if c_position and c_size and c_awaken then 
         local nRange = c_awaken:getAttribute("nRange");
         local tbTargetTypes = c_awaken:getAttribute("tbTargetTypes");
+        local bOffset = c_awaken:getAttribute("bOffset");
         local bClosed = false;
         local tbCollisionList = {};
         for _,sTargetType in ipairs(tbTargetTypes) do 
@@ -33,7 +34,11 @@ function awakensystem:StepHandler(iTargetEnt)
                     local iEnt_h = c_size_iEnt:getAttribute("h");
                     local w = c_size:getAttribute("w");
                     local h = c_size:getAttribute("h");
-                    local distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x + w/2,y + h/2);
+                    if bOffset then 
+                        local distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x,y );
+                    else 
+                        local distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x + w/2,y + h/2);
+                    end
                     if distance <= nRange then 
                         table.insert(tbCollisionList,{sType = iEnt.sType,id = iEnt.id})
                         bClosed = true
@@ -63,14 +68,23 @@ if g_option.DEBUG >=2 then
                 local h = c_size:getAttribute("h");
                 local nRange = c_awaken:getAttribute("nRange");
                 local bAwaken = c_awaken:getAttribute("bAwaken");
+                local bOffset = c_awaken:getAttribute("bOffset");
                 love.graphics.setColor({0.5,1,0.5,1});
-                love.graphics.circle("line",x + w/2 ,y + h/2,nRange);
+                if bOffset then 
+                    love.graphics.circle("line",x ,y,nRange);
+                else 
+                    love.graphics.circle("line",x + w/2 ,y + h/2,nRange);
+                end
                 if bAwaken then 
                     love.graphics.setColor(g_color.WARN_AWAKEN);
                 else 
                     love.graphics.setColor(g_color.NORMAL_AWAKEN);
                 end
-                love.graphics.circle("fill",x + w/2 ,y + h/2,nRange);
+                if bOffset then 
+                    love.graphics.circle("fill",x  ,y ,nRange);
+                else 
+                    love.graphics.circle("fill",x + w/2 ,y + h/2,nRange);
+                end
             end
         end 
     end

@@ -84,8 +84,8 @@ function gamescene:onEnterScene()
                         local newall = tbRoomList[sRoomID][nDoorRandom][1];
                         baseworld:getInstance():removeEntity(mywall.id);
                         baseworld:getInstance():removeEntity(newall.id);
-                        self:CreateTile(mywall.x,mywall.y);
-                        self:CreateTile(newall.x,newall.y);
+                        self:CreateTile(mywall.x,mywall.y,96,64);
+                        self:CreateTile(newall.x,newall.y,96,64);
                         self:CreateDoor(mywall.x + (96 - 16),mywall.y, 32, 64);
                         tbDoorPreList[sRoomID] = tbDoorPreList[sRoomID] or {};
                         tbDoorPreList[sRoomID].key = tbDoorPreList[sRoomID].key or 0;
@@ -95,8 +95,8 @@ function gamescene:onEnterScene()
                         local newall = tbRoomList[sRoomID][1][nDoorRandom];
                         baseworld:getInstance():removeEntity(mywall.id);
                         baseworld:getInstance():removeEntity(newall.id);
-                        self:CreateTile(mywall.x,mywall.y);
-                        self:CreateTile(newall.x,newall.y);
+                        self:CreateTile(mywall.x,mywall.y,96,64);
+                        self:CreateTile(newall.x,newall.y,96,64);
                         self:CreateDoor(mywall.x,mywall.y + (64 - 16), 96, 32);
                         tbDoorPreList[sRoomID] = tbDoorPreList[sRoomID] or {};
                         tbDoorPreList[sRoomID].key = tbDoorPreList[sRoomID].key or 0;
@@ -107,10 +107,10 @@ function gamescene:onEnterScene()
         end 
         self:CreateHero(herox,heroy);
         for i,v in ipairs(tbUniqueDirList) do 
+            self:CreateTile(v.x + 96 ,v.y + 64,960 - 96*2, 640 - 64*2);
             for a = 1, 10 do 
                 for b = 1, 10 do 
                     if not (a == 1 or a == 10 or b == 1 or b == 10) then 
-                        self:CreateTile(v.x + (b-1) * 96,v.y + (a-1) * 64);
                         self:RandomMakeItem(v.x + (b-1) * 96,v.y + (a-1) * 64);
                         if i ~= 1 then 
                             self:RandomMakeEnemy(v.x + (b-1) * 96,v.y + (a-1) * 64);
@@ -126,7 +126,7 @@ function gamescene:onEnterScene()
         local s_randomdirsystem = randomdirsystem:new();
         local s_shootfiresystem = shootfiresystem:new();
         local s_awakensystem = awakensystem:new();
-        local s_bulletsflyystem = bulletsflyystem:new();
+        local s_bulletsflystem = bulletsflystem:new();
         local btn_txt = uimgr:getInstance():create("shapebutton","btn_txt");
         btn_txt:SetData('Position', "x",0);
         btn_txt:SetData('Position', "y",0);
@@ -146,7 +146,7 @@ function gamescene:onEnterScene()
                 s_randomdirsystem:startup();
                 s_shootfiresystem:startup();
                 s_awakensystem:startup();
-                s_bulletsflyystem:startup();
+                s_bulletsflystem:startup();
             end)
         end)
         -- 测试随机生成场景用
@@ -159,9 +159,9 @@ function gamescene:onEnterScene()
     end)
 end
 
-function gamescene:CreateTile(x,y)
+function gamescene:CreateTile(x,y,w,h)
     local c_tile_position = position:new({ x = x, y = y });
-    local c_tile_size = size:new({ w = 96, h = 64 });
+    local c_tile_size = size:new({ w = w, h = h });
     local c_tile_sortorder = sortorder:new({nLayerIndex = g_tbLayer.GROUND;});
     local c_tile_shaperender = shaperender:new({ color = {0.6,0.3,0.7,0.4}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
@@ -187,7 +187,7 @@ function gamescene:CreateEnemy(x,y)
     local c_enemy_moveshape = moveshape:new();
     local c_enemy_bumprect = bumprect:new();
     local c_enemy_speed = speed:new({ speed = 70 });
-    local c_enemy_awaken = awaken:new({nRange = 100,bAwaken = false, tbTargetTypes = {'hero'}});
+    local c_enemy_awaken = awaken:new({nRange = 100,bAwaken = false, bOffset = false,tbTargetTypes = {'hero'}});
     local c_enemy_shaperender = shaperender:new({ color = {0.7,1,0,0.7}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
     local e_item = enemy:new({ c_enemy_position,c_enemy_size,c_enemy_shaperender,c_enemy_direction,
@@ -199,10 +199,10 @@ function gamescene:CreateHero(x,y)
     local c_hero_position = position:new({ x = x, y = y });
     local c_hero_size = size:new({ w = 32, h = 32 });
     local c_hero_direction = direction:new({ x= 0, y = 0 });
-    local c_hero_speed = speed:new({ speed = 110 });
+    local c_hero_speed = speed:new({ speed = 160 });
     local c_hero_wasdmove = wasdmove:new();
     local c_hero_bumprect = bumprect:new();
-    local c_hero_awaken = awaken:new({nRange = 32,bAwaken = false, tbTargetTypes = {'enemy','item','door'}});
+    local c_hero_awaken = awaken:new({nRange = 32,bAwaken = false, bOffset = false,tbTargetTypes = {'enemy','item','door'}});
     local c_hero_shootfire = shootfire:new({nProgNum = 1, nJianGe = 16});
     local c_hero_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
     local c_hero_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
@@ -228,7 +228,7 @@ function gamescene:CreateWall(x,y)
     local c_wall_size = size:new({ w = 96, h = 64 });
     local c_wall_bumprect = bumprect:new();
     local c_wall_sortorder = sortorder:new({nLayerIndex = g_tbLayer.GROUND;});
-    local c_wall_shaperender = shaperender:new({ color = {205/255,129/255,98/255,1}, drawType="shape",shapeType = "rectangle", 
+    local c_wall_shaperender = shaperender:new({ color = {205/255,129/255,98/255,0}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
     local e_wall = wall:new({ c_wall_position,c_wall_size,c_wall_shaperender,c_wall_sortorder,c_wall_bumprect });
     return e_wall.id;

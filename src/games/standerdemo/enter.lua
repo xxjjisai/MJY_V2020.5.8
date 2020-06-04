@@ -50,6 +50,6 @@ _G.enter =
         "wasdmovesystem",
         "shootfiresystem",
         "awakensystem",
-        "bulletsflyystem",
+        "bulletsflystem",
     };
 }
