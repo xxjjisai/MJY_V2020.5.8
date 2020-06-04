@@ -1,12 +1,21 @@
 _G.bulletsflyystem = class("bulletsflyystem", system);
 
 function bulletsflyystem:getRequestComponents()
-    return {'position','bulletsfly','speed'};
+    return {'position','size','bulletsfly','speed'};
 end
+
+function bulletsflyystem:onEnterScene()
+    baseevent:getInstance():addEvent(baseworld:getInstance():getSystem('awakensystem'),self);
+end 
+
+function bulletsflyystem:onExitScene()
+    baseevent:getInstance():removeEvent(self,baseworld:getInstance():getSystem('awakensystem'));
+end 
 
 function bulletsflyystem:onUpdate(dt)
     for i,iTargetEnt in ipairs(self:getTargets()) do 
         local c_position = iTargetEnt:getComponent("position");
+        local c_size = iTargetEnt:getComponent("size");
         local c_speed = iTargetEnt:getComponent("speed");
         local c_bulletsfly = iTargetEnt:getComponent("bulletsfly");
         local fireAngle = c_bulletsfly:getAttribute("fireAngle");
@@ -20,3 +29,14 @@ function bulletsflyystem:onUpdate(dt)
         end 
     end 
 end
+
+function bulletsflyystem:EvtCollisionHandler(nColliderID,sColliderType,tbCollisionList)
+    if sColliderType == "bullet" then 
+        baseworld:getInstance():removeEntity(nColliderID);
+        for i,v in ipairs(tbCollisionList) do 
+            if v.sType ~= "wall" then 
+                baseworld:getInstance():removeEntity(v.id);
+            end
+        end
+    end
+end 

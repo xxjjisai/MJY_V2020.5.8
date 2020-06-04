@@ -199,11 +199,11 @@ function gamescene:CreateHero(x,y)
     local c_hero_position = position:new({ x = x, y = y });
     local c_hero_size = size:new({ w = 32, h = 32 });
     local c_hero_direction = direction:new({ x= 0, y = 0 });
-    local c_hero_speed = speed:new({ speed = 210 });
+    local c_hero_speed = speed:new({ speed = 110 });
     local c_hero_wasdmove = wasdmove:new();
     local c_hero_bumprect = bumprect:new();
     local c_hero_awaken = awaken:new({nRange = 32,bAwaken = false, tbTargetTypes = {'enemy','item','door'}});
-    local c_hero_shootfire = shootfire:new({nProgNum = 1, nJianGe = 6});
+    local c_hero_shootfire = shootfire:new({nProgNum = 1, nJianGe = 16});
     local c_hero_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
     local c_hero_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
@@ -220,7 +220,7 @@ function gamescene:CreateDoor(x,y,w,h)
     local c_door_sortorder = sortorder:new({nLayerIndex = g_tbLayer.DOOR;});
     local c_door_shaperender = shaperender:new({ color = {1,1,1,1}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
-    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder });--, c_door_bumprect });
+    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder , c_door_bumprect });
 end
 
 function gamescene:CreateWall(x,y)
