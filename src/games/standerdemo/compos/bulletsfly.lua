@@ -1,0 +1,1 @@
+_G.bulletsfly = class('bulletsfly',component)

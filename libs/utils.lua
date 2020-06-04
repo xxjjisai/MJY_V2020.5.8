@@ -8,6 +8,14 @@ function hitTestObject(obj1,obj2)
 	return false
 end
 
+function Angle(sType,x1,y1,x2,y2)
+    if sType == 'x' then 
+        local n_firetheta = math.atan2(y1 - y2, x1 - x2);
+        local n_fireAngle = 180 - n_firetheta * (180 / math.pi);
+        return n_firetheta,n_fireAngle;
+    end
+end
+
 function GetTime()
     -- return socket.gettime()
     -- return os.time();

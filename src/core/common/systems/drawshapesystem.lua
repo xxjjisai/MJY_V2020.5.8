@@ -20,5 +20,8 @@ function drawshapesystem:onDraw()
         if shapeType == "rectangle" then
             love.graphics.rectangle(fillType,x,y,w,h);
         end
+        if shapeType == "circle" then
+            love.graphics.circle(fillType,x ,y,w);
+        end
     end 
 end

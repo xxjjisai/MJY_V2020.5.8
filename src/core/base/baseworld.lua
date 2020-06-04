@@ -21,6 +21,7 @@ function baseworld:addEntity(iEnt)
     self.tbEntitiesList = self.tbEntitiesList or {};
     self.tbEntitiesList[sEntName] = iEnt;
     iEnt.name = sEntName;
+    iEnt.sType = iEnt.class.name;
 end
 
 function baseworld:getEntity(id)
@@ -30,6 +31,16 @@ function baseworld:getEntity(id)
         end 
     end
     return nil;
+end
+
+function baseworld:getEntityByType(sType)
+    local tbEntList = {};
+    for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
+        if tmp_iEnt.sType == sType then 
+            table.insert(tbEntList,tmp_iEnt);
+        end 
+    end
+    return tbEntList;
 end
 
 function baseworld:removeEntity(id)

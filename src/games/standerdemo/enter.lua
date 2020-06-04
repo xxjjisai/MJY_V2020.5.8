@@ -13,6 +13,9 @@ _G.enter =
         "moveshape",
         "randomdir",
         "wasdmove",
+        "shootfire",
+        "awaken",
+        "bulletsfly",
     };
     
     configs = 
@@ -28,6 +31,8 @@ _G.enter =
         "wall",
         "item",
         "enemy",
+        "door",
+        "bullet",
     };
 
     scenes = 
@@ -43,5 +48,8 @@ _G.enter =
         "moveshapesystem",
         "randomdirsystem",
         "wasdmovesystem",
+        "shootfiresystem",
+        "awakensystem",
+        "bulletsflyystem",
     };
 }

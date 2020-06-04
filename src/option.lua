@@ -14,7 +14,8 @@ _G.g_tbLayer =
     HUMAN = 201; -- 各类实体
     HUMAN_DOWN = 301; -- 道具等
     GROUND_UP = 401; -- 地面植物
-    GROUND = 501; -- 最下层
+    DOOR = 501; -- 门
+    GROUND = 599; -- 最下层
 }
 
 _G.g_project = 
@@ -61,6 +62,8 @@ _G.g_color =
     BLUE = {0,0,1,1}; -- 蓝色
     PURPLE = {1,0,1,1}; -- 紫色
     SECURITY = {1,1,1,0.1}; -- 防伪Logo
+    NORMAL_AWAKEN = {0.5,1,0.5,0.2}; -- 正常激活
+    WARN_AWAKEN = {1,1,0,0.5}; -- 警告激活
 }
 
 _G.g_gamestate = 

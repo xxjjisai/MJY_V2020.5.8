@@ -1,0 +1,1 @@
+_G.shootfire = class('shootfire',component)
