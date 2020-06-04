@@ -25,10 +25,10 @@ function shootfiresystem:ShootHandler(iTargetEnt)
         local ox = c_position:getAttribute("x") + 16;
         local oy = c_position:getAttribute("y") + 16;
         local n_firetheta,_ = Angle('x',ox,oy,mx,my);
-        -- tbPos = { -0.2,-0.1,0,0.1,0.2 } -- 三弹
-        -- tbPos = { -0.1,0,0.1 } -- 五弹
-        tbPos = { 0 }
-        for i = 1, 1 do 
+        tbPos = { -0.2,-0.1,0,0.1,0.2 } -- 五弹
+        -- tbPos = { -0.1,0,0.1 } -- 三弹
+        -- tbPos = { 0 }
+        for i = 1, 5 do 
             self:CreateBullet(ox,oy,n_firetheta + tbPos[i]);
         end 
     end
