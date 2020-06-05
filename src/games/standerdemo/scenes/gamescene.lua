@@ -231,7 +231,7 @@ function gamescene:CreateDoor(x,y,w,h)
     local c_door_sortorder = sortorder:new({nLayerIndex = g_tbLayer.DOOR;});
     local c_door_shaperender = shaperender:new({ color = {1,1,1,1}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
-    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder,c_door_attribute });-- , c_door_bumprect
+    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder,c_door_attribute  , c_door_bumprect});--
 end
 
 function gamescene:CreateWall(x,y)
