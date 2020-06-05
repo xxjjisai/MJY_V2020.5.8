@@ -16,6 +16,8 @@ _G.enter =
         "shootfire",
         "awaken",
         "bulletsfly",
+        "attribute",
+        "enemyshoot",
     };
     
     configs = 
@@ -41,6 +43,7 @@ _G.enter =
         "welcomescene",
         "gamescene",
         "testscene",
+        "overscene",
     };
 
     systems = 
@@ -51,5 +54,7 @@ _G.enter =
         "shootfiresystem",
         "awakensystem",
         "bulletsflystem",
+        "attributesystem",
+        "enemyshootsystem",
     };
 }

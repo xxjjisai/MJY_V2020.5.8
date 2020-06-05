@@ -34,10 +34,11 @@ function awakensystem:StepHandler(iTargetEnt)
                     local iEnt_h = c_size_iEnt:getAttribute("h");
                     local w = c_size:getAttribute("w");
                     local h = c_size:getAttribute("h");
+                    local distance = 0;
                     if bOffset then 
-                        local distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x,y );
+                        distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x,y);
                     else 
-                        local distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x + w/2,y + h/2);
+                        distance = Dist(iEnt_x + w/2,iEnt_y + h/2,x + w/2,y + h/2);
                     end
                     if distance <= nRange then 
                         table.insert(tbCollisionList,{sType = iEnt.sType,id = iEnt.id})

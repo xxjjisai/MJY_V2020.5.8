@@ -127,10 +127,13 @@ function gamescene:onEnterScene()
         local s_shootfiresystem = shootfiresystem:new();
         local s_awakensystem = awakensystem:new();
         local s_bulletsflystem = bulletsflystem:new();
+        local s_attributesystem = attributesystem:new();
+        local s_enemyshootsystem = enemyshootsystem:new();
+
         local btn_txt = uimgr:getInstance():create("shapebutton","btn_txt");
         btn_txt:SetData('Position', "x",0);
         btn_txt:SetData('Position', "y",0);
-        btn_txt:SetText("Day 1");
+        btn_txt:SetText("测试用关卡");
         btn_txt:SetData("Size","w",W);
         btn_txt:SetData("Size","h",H);
         btn_txt:SetData("Style","bgcolor",{0,0,0,1});
@@ -147,6 +150,8 @@ function gamescene:onEnterScene()
                 s_shootfiresystem:startup();
                 s_awakensystem:startup();
                 s_bulletsflystem:startup();
+                s_attributesystem:startup();
+                s_enemyshootsystem:startup();
             end)
         end)
         -- 测试随机生成场景用
@@ -173,9 +178,11 @@ function gamescene:CreateItem(x,y)
     local c_item_size = size:new({ w = 32, h = 32 });
     local c_item_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN_DOWN;});
     local c_item_bumprect = bumprect:new();
+    local c_item_attribute = attribute:new({hp=32});
     local c_item_shaperender = shaperender:new({ color = {1,0.2,0.5,1}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
-    local e_item = item:new({ c_item_position,c_item_size,c_item_shaperender,c_item_sortorder,c_item_bumprect });
+    local e_item = item:new({ c_item_position,c_item_size,c_item_shaperender,c_item_sortorder,c_item_bumprect,
+    c_item_attribute });
 end
 
 function gamescene:CreateEnemy(x,y)
@@ -186,13 +193,15 @@ function gamescene:CreateEnemy(x,y)
     local c_enemy_randomdir = randomdir:new({nProgNum = 199, nJianGe = math.random(100,300)});
     local c_enemy_moveshape = moveshape:new();
     local c_enemy_bumprect = bumprect:new();
+    local c_enemy_enemyshoot = enemyshoot:new({nProgNum = 1, nJianGe = 16});
+    local c_enemy_attribute = attribute:new({hp=32});
     local c_enemy_speed = speed:new({ speed = 70 });
-    local c_enemy_awaken = awaken:new({nRange = 100,bAwaken = false, bOffset = false,tbTargetTypes = {'hero'}});
+    local c_enemy_awaken = awaken:new({nRange = 150,bAwaken = false, bOffset = false,tbTargetTypes = {'hero'}});
     local c_enemy_shaperender = shaperender:new({ color = {0.7,1,0,0.7}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
     local e_item = enemy:new({ c_enemy_position,c_enemy_size,c_enemy_shaperender,c_enemy_direction,
                     c_enemy_sortorder,c_enemy_randomdir,c_enemy_moveshape,c_enemy_bumprect,c_enemy_speed,
-                    c_enemy_awaken });
+                    c_enemy_awaken,c_enemy_attribute,c_enemy_enemyshoot });
 end
 
 function gamescene:CreateHero(x,y)
@@ -202,6 +211,7 @@ function gamescene:CreateHero(x,y)
     local c_hero_speed = speed:new({ speed = 160 });
     local c_hero_wasdmove = wasdmove:new();
     local c_hero_bumprect = bumprect:new();
+    local c_hero_attribute = attribute:new({hp=1000});
     local c_hero_awaken = awaken:new({nRange = 32,bAwaken = false, bOffset = false,tbTargetTypes = {'enemy','item','door'}});
     local c_hero_shootfire = shootfire:new({nProgNum = 1, nJianGe = 16});
     local c_hero_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
@@ -209,7 +219,7 @@ function gamescene:CreateHero(x,y)
                                                         fillType = "fill" });
     local e_hero = hero:new({ c_hero_position,c_hero_size,c_hero_shaperender,
     c_hero_direction,c_hero_speed,c_hero_wasdmove,c_hero_sortorder,c_hero_bumprect,
-    c_hero_awaken,c_hero_shootfire });
+    c_hero_awaken,c_hero_shootfire,c_hero_attribute });
     cameramgr:getInstance():SetFollowPlayer(e_hero);
 end
 
@@ -217,10 +227,11 @@ function gamescene:CreateDoor(x,y,w,h)
     local c_door_position = position:new({ x = x, y = y });
     local c_door_size = size:new({ w = w, h = h });
     local c_door_bumprect = bumprect:new();
+    local c_door_attribute = attribute:new({hp=32});
     local c_door_sortorder = sortorder:new({nLayerIndex = g_tbLayer.DOOR;});
     local c_door_shaperender = shaperender:new({ color = {1,1,1,1}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
-    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder , c_door_bumprect });
+    local e_door = door:new({ c_door_position,c_door_size,c_door_shaperender,c_door_sortorder,c_door_attribute });-- , c_door_bumprect
 end
 
 function gamescene:CreateWall(x,y)
@@ -228,7 +239,7 @@ function gamescene:CreateWall(x,y)
     local c_wall_size = size:new({ w = 96, h = 64 });
     local c_wall_bumprect = bumprect:new();
     local c_wall_sortorder = sortorder:new({nLayerIndex = g_tbLayer.GROUND;});
-    local c_wall_shaperender = shaperender:new({ color = {205/255,129/255,98/255,0}, drawType="shape",shapeType = "rectangle", 
+    local c_wall_shaperender = shaperender:new({ color = {205/255,129/255,98/255,1}, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "fill" });
     local e_wall = wall:new({ c_wall_position,c_wall_size,c_wall_shaperender,c_wall_sortorder,c_wall_bumprect });
     return e_wall.id;

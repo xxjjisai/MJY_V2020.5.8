@@ -1,6 +1,6 @@
 _G.g_option = 
 {
-    DEBUG = 2; -- 调试模式
+    DEBUG = 3; -- 调试模式
     LOG = 0; -- 生成文件日志
     SPLASH = 1; -- 是否播放闪屏
     SPLASH_SPEED = 1; -- 闪屏速度
