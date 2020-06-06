@@ -22,6 +22,7 @@ function enemyshootsystem:EvtCollisionHandler(nColliderID,sColliderType,tbCollis
     if sColliderType == "enemy" then 
         local iEnemy = baseworld:getInstance():getEntity(nColliderID);
         local c_enemyshoot = iEnemy:getComponent('enemyshoot');
+        local c_awaken = iEnemy:getComponent('awaken');
         local nProgNum = c_enemyshoot:getAttribute('nProgNum');
         local nJianGe = c_enemyshoot:getAttribute('nJianGe');
         nProgNum = nProgNum + 1
@@ -29,8 +30,17 @@ function enemyshootsystem:EvtCollisionHandler(nColliderID,sColliderType,tbCollis
         if nProgNum%nJianGe ~= 0 then
             return;
         end
+        CheckInTargets = function (tbTargetTypes,tTmpType)
+            for _,sType in ipairs(tbTargetTypes) do 
+                if sType == tTmpType then 
+                    return true
+                end 
+            end     
+            return false;
+        end
         for i,v in ipairs(tbCollisionList) do 
-            if v.sType == "hero" then 
+            local tbTargetTypes = c_awaken:getAttribute("tbTargetTypes");
+            if CheckInTargets(tbTargetTypes,v.sType) then 
                 local iHero = baseworld:getInstance():getEntity(v.id);
                 local hx = iHero:getComponent('position'):getAttribute('x') + 16;
                 local hy = iHero:getComponent('position'):getAttribute('y') + 16;
