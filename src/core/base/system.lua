@@ -98,3 +98,15 @@ end
 function system:getSystem(sClassName)
     return baseworld:getInstance():getSystem(sClassName);
 end
+
+function system:addEvent(sSysName)
+    baseevent:getInstance():addEvent(baseworld:getInstance():getSystem(sSysName),self);
+end
+
+function system:removeEvent(sSysName)
+    baseevent:getInstance():removeEvent(self,baseworld:getInstance():getSystem(sSysName));
+end
+
+function system:doEvent(sFunc,...)
+    baseevent:getInstance():doEvent(self,sFunc,...);
+end

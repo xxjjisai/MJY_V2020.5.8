@@ -13,7 +13,8 @@ _G.enter =
 {
     compos = 
     {
-
+        'moveselect',
+        'wasdmove',
     };
     
     configs = 
@@ -36,6 +37,9 @@ _G.enter =
 
     systems = 
     {
-
+        'moveselectsystem',
+        'makebumpsystem',
+        'wasdmovesystem',
+        'editorsystem',
     };
 }

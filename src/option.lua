@@ -20,7 +20,7 @@ _G.g_tbLayer =
 
 _G.g_project = 
 {
-    CUR_PROJECT_NAME = "standerdemo", -- 当前项目工程名称
+    CUR_PROJECT_NAME = "rpgeditor", -- 当前项目工程名称
     CUR_PROJECT_TYPE = "roguelike", -- 当前项目工程游戏类型，用来区别摄像机类型和渲染层级类型 (roguelike,platform,...)
     CUR_PROJECT_MAINSCENE = "mainscene", -- 当前项目工程主场景名称
     CUR_PROJECT_SCENE_TRANSITION_TIME = 1, -- 当前项目工程场景过渡时长
@@ -43,6 +43,7 @@ _G.g_CommonScript =
         'speed',
         'direction',
         'bumprect',
+        'awaken',
     };
     
     systems = 
@@ -51,6 +52,7 @@ _G.g_CommonScript =
         'drawshapesystem',
         'welceomsystem',
         'bumprectsystem',
+        'awakensystem',
     };
 }
 
@@ -61,6 +63,7 @@ _G.g_color =
     GREEN = {0,1,0,1}; -- 绿色
     BLUE = {0,0,1,1}; -- 蓝色
     PURPLE = {1,0,1,1}; -- 紫色
+    ALPHA = {0,0,0,0}; -- 透明
     SECURITY = {1,1,1,0.1}; -- 防伪Logo
     NORMAL_AWAKEN = {0.5,1,0.5,0.2}; -- 正常激活
     WARN_AWAKEN = {1,1,0,0.5}; -- 警告激活
