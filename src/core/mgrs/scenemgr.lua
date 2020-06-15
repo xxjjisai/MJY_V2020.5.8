@@ -8,14 +8,14 @@ function scenemgr:create()
     cameramgr:getInstance():create();
 end
 
-function scenemgr:createScene(sSceneName)
+function scenemgr:createScene(sSceneName,...)
     if _G[sSceneName] == nil then 
         self:trace(3,"check scene name",sSceneName);
         return
     end 
     self.tbSceneList[sSceneName] = sSceneName;
     _G[sSceneName]:getInstance():create();
-    _G[sSceneName]:getInstance():enterScene();
+    _G[sSceneName]:getInstance():enterScene(...);
     self.sSceneName = sSceneName;
 end
 
@@ -33,17 +33,17 @@ function scenemgr:draw()
     end);
 end
 
-function scenemgr:switchScene(sSceneName)
+function scenemgr:switchScene(sSceneName,...)
     if _G[self.sSceneName] then 
         uimgr:getInstance():destory();
         _G[self.sSceneName]:getInstance():exitScene();
     end 
     if not self.tbSceneList[sSceneName] then 
-        self:createScene(sSceneName);
+        self:createScene(sSceneName,...);
         return
     end
     _G[sSceneName]:getInstance():create();
-    _G[sSceneName]:getInstance():enterScene();
+    _G[sSceneName]:getInstance():enterScene(...);
     self.sSceneName = sSceneName;
 end
 

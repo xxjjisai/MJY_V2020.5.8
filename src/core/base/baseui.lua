@@ -50,3 +50,17 @@ function baseui:SetText(sText)
     local sText = sText or "文字";
     self:SetData('Style', "sText", sText );
 end
+
+function baseui:SetSize(w,h)
+    local w = w or 0;
+    local h = h or 0;
+    self:SetData('Size', "w", w);
+    self:SetData('Size', "h", h);
+end
+
+function baseui:SetPosition(x,y)
+    local x = x or 0;
+    local y = y or 0;
+    self:SetData('Position', "x", x);
+    self:SetData('Position', "y", y);
+end

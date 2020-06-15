@@ -29,7 +29,18 @@ function shootfiresystem:ShootHandler(iTargetEnt)
         -- tbPos = { -0.1,0,0.1 } -- 三弹
         -- tbPos = { 0 }
         for i = 1, 5 do 
-            self:CreateBullet(ox,oy,n_firetheta + tbPos[i],iTargetEnt.id);
+            -- self:CreateBullet(ox,oy,n_firetheta + tbPos[i],iTargetEnt.id);
+            local iBullet = self:getSystem('bulletspoolsystem'):comeOutPool('bullet_hero');
+            if iBullet then 
+                if iBullet:getComponent('position') then 
+                    iBullet:getComponent('position'):addAttribute('x',ox);
+                    iBullet:getComponent('position'):addAttribute('y',oy);
+                    iBullet:getComponent('bulletsfly'):addAttribute('fireAngle',n_firetheta + tbPos[i]);
+                    iBullet:getComponent('bulletsfly'):addAttribute('shooterID',iTargetEnt.id);
+                end
+            else 
+                self:CreateBullet(ox,oy,n_firetheta + tbPos[i],iTargetEnt.id);
+            end
         end 
     end
 end
@@ -53,4 +64,6 @@ function shootfiresystem:CreateBullet(x,y,fireAngle,id)
         c_bullet_awaken,
         c_bullet_shootfire, 
     });
+    e_bullet.sTag = 'bullet_hero';
+    -- self:getSystem('bulletspoolsystem'):comeInPool('bullet_hero',e_bullet);
 end

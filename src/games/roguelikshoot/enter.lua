@@ -59,5 +59,6 @@ _G.enter =
         "bulletsflystem",
         "attributesystem",
         "enemyshootsystem",
+        "bulletspoolsystem",
     };
 }

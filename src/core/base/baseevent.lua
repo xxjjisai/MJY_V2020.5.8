@@ -23,7 +23,7 @@ function baseevent:doEvent(tbDistributor,sFuncName,...)
         if funcEvent ~= nil then 
             local r,x = pcall(funcEvent,tbListener,unpack(args));
             if r == false then
-                return error(string.format("%s DoEvent Failed %s",r,x));
+                return self:trace(3,string.format("%s DoEvent Failed %s",r,x));
             end
         end 
     end 

@@ -49,7 +49,15 @@ function enemyshootsystem:EvtCollisionHandler(nColliderID,sColliderType,tbCollis
                 local n_firetheta,_ = Angle('x',ox,oy,hx,hy);
                 local tbPos = { -0.1,0,0.1 };
                 for i = 1, 3 do 
-                    self:CreateBullet(ox,oy,n_firetheta + tbPos[i],iEnemy.id);
+                    local iBullet = self:getSystem('bulletspoolsystem'):comeOutPool('bullet_enemy');
+                    if iBullet then 
+                        iBullet:getComponent('position'):addAttribute('x',ox);
+                        iBullet:getComponent('position'):addAttribute('y',oy);
+                        iBullet:getComponent('bulletsfly'):addAttribute('fireAngle',n_firetheta + tbPos[i]);
+                        iBullet:getComponent('bulletsfly'):addAttribute('shooterID',iEnemy.id);
+                    else 
+                        self:CreateBullet(ox,oy,n_firetheta + tbPos[i],iEnemy.id);
+                    end
                 end 
             end
         end
@@ -75,4 +83,6 @@ function enemyshootsystem:CreateBullet(x,y,fireAngle,id)
         c_bullet_awaken,
         c_bullet_shootfire, 
     });
+    e_bullet.sTag = 'bullet_enemy';
+    -- self:getSystem('bulletspoolsystem'):comeInPool('bullet_enemy',e_bullet);
 end

@@ -32,8 +32,8 @@ function basescene:destory()
     baseworld:getInstance():destory();
 end
 
-function basescene:enterScene()
-    self:onEnterScene();
+function basescene:enterScene(...)
+    self:onEnterScene(...);
     baseworld:getInstance():enterScene();
 end
 
@@ -44,7 +44,7 @@ end
 
 ----------------------------------------------
 
-function basescene:onEnterScene()
+function basescene:onEnterScene(...)
 
 end
 

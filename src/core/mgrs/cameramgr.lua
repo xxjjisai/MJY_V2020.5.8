@@ -53,7 +53,7 @@ function cameramgr:Follow()
     if not self.iFollowPlayer then return end;
     local iTargetEnt = self.iFollowPlayer;
     local c_position = iTargetEnt:getComponent("position");
-    local c_size = iTargetEnt:getComponent("size")
+    local c_size = iTargetEnt:getComponent("size");
     if c_position and c_size then
         local x = c_position:getAttribute("x");
         local y = c_position:getAttribute("y");
@@ -62,6 +62,15 @@ function cameramgr:Follow()
         local tx,ty = x + w * 0.5, y + h * 0.5;
         camera:follow(tx,ty);
     end
+    -- local c_speed = iTargetEnt:getComponent("speed");
+    -- if c_speed then 
+    --     local keyi = love.keyboard.isDown("lshift");
+    --     if keyi then 
+    --         c_speed:addAttribute('speed', 500);     
+    --     else 
+    --         c_speed:addAttribute('speed', 100);    
+    --     end
+    -- end
 end 
 
 function cameramgr:Attach()

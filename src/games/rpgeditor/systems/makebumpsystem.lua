@@ -10,10 +10,16 @@ end
 
 function makebumpsystem:onExitScene()
     self:removeEvent('moveselectsystem');
+    self.tbBumpList = nil;
 end
 
 function makebumpsystem:getBumpList()
     return self.tbBumpList;
+end
+
+function makebumpsystem:addBumpList(iBump)
+    self.tbBumpList = self.tbBumpList or {};
+    table.insert(self.tbBumpList, iBump);
 end
 
 function makebumpsystem:EvtSelectAreInfo(x,y,w,h)
@@ -25,6 +31,6 @@ function makebumpsystem:EvtSelectAreInfo(x,y,w,h)
                                                         fillType = "line" });
     local e_hero = hero:new({ c_position,c_size,c_bumprect,c_sortorder,c_shaperender });
 
-    self.tbBumpList = self.tbBumpList or {};
-    table.insert(self.tbBumpList, e_hero);
+    self:addBumpList(e_hero);
+    
 end

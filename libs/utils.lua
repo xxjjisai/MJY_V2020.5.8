@@ -527,7 +527,20 @@ function table.show(t, name, indent)
  end
 
 
-
+ function GetPreciseDecimal(nNum, n)
+    if type(nNum) ~= "number" then
+        return nNum;
+    end
+    n = n or 0;
+    n = math.floor(n)
+    if n < 0 then
+        n = 0;
+    end
+    local nDecimal = 10 ^ n
+    local nTemp = math.floor(nNum * nDecimal);
+    local nRet = nTemp / nDecimal;
+    return nRet;
+end
  
 
 -- �������� �俭�� ��CSDN ���� ��ȫ�ĵ�ַ������https://blog.csdn.net/w18756901575/article/details/74982666?utm_source=copy 

@@ -130,6 +130,7 @@ function gamescene:onEnterScene()
         local s_bulletsflystem   = bulletsflystem:new();
         local s_attributesystem  = attributesystem:new();
         local s_enemyshootsystem = enemyshootsystem:new();
+        local s_bulletspoolsystem = bulletspoolsystem:new();
 
         local btn_txt = uimgr:getInstance():create("shapebutton","btn_txt");
         btn_txt:SetData('Position', "x",0);
@@ -153,6 +154,7 @@ function gamescene:onEnterScene()
                 s_bulletsflystem:startup();
                 s_attributesystem:startup();
                 s_enemyshootsystem:startup();
+                s_bulletspoolsystem:startup();
             end)
         end)
         -- 测试随机生成场景用

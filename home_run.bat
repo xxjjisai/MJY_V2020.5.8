@@ -1,1 +1,1 @@
-"D:\Cosmos\GameDEV\Love2d\KAI\enginelove.exe" "%cd%"
+"D:\Cosmos\GameDEV\Love2d\KAI\engine\love.exe" "%cd%"
