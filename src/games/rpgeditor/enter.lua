@@ -26,6 +26,7 @@ _G.enter =
     {
         "gametitle",
         "hero",
+        "tile",
     };
 
     scenes = 

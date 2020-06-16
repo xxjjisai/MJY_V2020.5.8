@@ -27,7 +27,7 @@ function makebumpsystem:EvtSelectAreInfo(x,y,w,h)
     local c_size = size:new({ w = w, h = h });
     local c_bumprect = bumprect:new();
     local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
-    local c_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
+    local c_shaperender = shaperender:new({ color = g_color.RED, drawType="shape",shapeType = "rectangle", 
                                                         fillType = "line" });
     local e_hero = hero:new({ c_position,c_size,c_bumprect,c_sortorder,c_shaperender });
 

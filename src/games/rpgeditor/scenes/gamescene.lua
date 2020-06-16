@@ -17,7 +17,7 @@ function gamescene:onEnterScene(bRead)
         local c_direction = direction:new({ x = 0, y = 0 });
         local c_wasdmove = wasdmove:new();
         local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
-        local c_shaperender = shaperender:new({ color = g_color.ALPHA, drawType="shape",shapeType = "rectangle", 
+        local c_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
                                                             fillType = "line" });
         local e_hero = hero:new({ c_position,c_size,c_speed,c_direction,c_wasdmove,c_sortorder,c_shaperender });
         
@@ -27,7 +27,7 @@ function gamescene:onEnterScene(bRead)
         local s_makebumpsystem   = makebumpsystem:new();
         local s_drawshapesystem  = drawshapesystem:new();
         local s_wasdmovesystem   = wasdmovesystem:new();
-        local s_editorsystem   = editorsystem:new();
+        local s_editorsystem     = editorsystem:new();
 
         scenemgr:getInstance():startupSystem(0.1,function ()
             s_drawshapesystem:startup();
@@ -36,6 +36,29 @@ function gamescene:onEnterScene(bRead)
             s_makebumpsystem:startup();
             s_editorsystem:startup();
         end)
+
+        package.loaded['map1'] = nil
+        require('src/games/roguelikechess/configs/mapconfigs/map1')
+        -- for i,v in ipairs(map1.tbTileList) do 
+        local tbTileList = map1.tbTileList;
+        for i = 1, #map1.tbTileList do
+            for j = 1, #map1.tbTileList[i] do
+                local sTile = map1.tbTileList[i][j];
+                if sTile == "#" then
+                    local c_tile_position = position:new({ x = (j-1)*96, y = (i-1)*64 });
+                    local c_tile_size = size:new({ w = 96, h = 64 });
+                    local c_tile_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
+                    local c_tile_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
+                                                                        fillType = "line" });
+                    local e_tile = tile:new({ 
+                        c_tile_position,
+                        c_tile_size,
+                        c_tile_sortorder,
+                        c_tile_shaperender,
+                     });
+                end
+            end
+        end
 
         if bRead then 
             package.loaded['map'] = nil
@@ -48,7 +71,7 @@ function gamescene:onEnterScene(bRead)
                 local c_size = size:new({ w = w, h = h });
                 local c_bumprect = bumprect:new();
                 local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN;});
-                local c_shaperender = shaperender:new({ color = g_color.BLUE, drawType="shape",shapeType = "rectangle", 
+                local c_shaperender = shaperender:new({ color = g_color.RED, drawType="shape",shapeType = "rectangle", 
                                                                     fillType = "line" });
                 local e_hero = hero:new({ c_position,c_size,c_bumprect,c_sortorder,c_shaperender });
                 s_makebumpsystem:addBumpList(e_hero);
