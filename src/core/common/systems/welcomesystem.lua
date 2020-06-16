@@ -1,10 +1,10 @@
-_G.welceomsystem = class("welceomsystem", system);
+_G.welcomesystem = class("welcomesystem", system);
 
-function welceomsystem:getRequestComponents()
+function welcomesystem:getRequestComponents()
     return {'title'};
 end
 
-function welceomsystem:onDraw()
+function welcomesystem:onDraw()
     for i,iTargetEnt in ipairs(self:getTargets()) do 
         local c_title = iTargetEnt:getComponent("title");
         local color = c_title:getAttribute("color");

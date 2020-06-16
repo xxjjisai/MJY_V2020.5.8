@@ -95,7 +95,7 @@ _G.API =
 
 			local e_gametitle = gametitle:new({c_title});
 
-			local s_welceomsystem = welceomsystem:new();
+			local s_welcomesystem = welcomesystem:new();
 
 			local btn_help = uimgr:getInstance():create("shapebutton","btn_help");
 			btn_help:SetPositionCenter(0,130);
@@ -116,7 +116,7 @@ _G.API =
 			
 				local e_gametitle = gametitle:new({c_title});
 			
-				local s_welceomsystem = welceomsystem:new();
+				local s_welcomesystem = welcomesystem:new();
 				local s_wasdmovesystem = wasdmovesystem:new();
 
 				cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,

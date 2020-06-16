@@ -7,7 +7,7 @@ function welcomescene:onEnterScene()
     
         local e_gametitle = gametitle:new({c_title});
     
-        local s_welceomsystem = welceomsystem:new();
+        local s_welcomesystem = welcomesystem:new();
 
         self:initCamera();
     

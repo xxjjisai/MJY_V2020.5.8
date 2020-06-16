@@ -47,8 +47,9 @@ function enemyshootsystem:EvtCollisionHandler(nColliderID,sColliderType,tbCollis
                 local ox = iEnemy:getComponent('position'):getAttribute('x') + 16;
                 local oy = iEnemy:getComponent('position'):getAttribute('y') + 16;
                 local n_firetheta,_ = Angle('x',ox,oy,hx,hy);
-                local tbPos = { -0.1,0,0.1 };
-                for i = 1, 3 do 
+                -- local tbPos = { -0.1,0,0.1 };
+                local tbPos = { 0 };
+                for i = 1, 1 do 
                     local iBullet = self:getSystem('bulletspoolsystem'):comeOutPool('bullet_enemy');
                     if iBullet then 
                         iBullet:getComponent('position'):addAttribute('x',ox);
