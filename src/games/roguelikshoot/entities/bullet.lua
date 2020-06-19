@@ -1,1 +1,0 @@
-_G.bullet = class('bullet',entity)

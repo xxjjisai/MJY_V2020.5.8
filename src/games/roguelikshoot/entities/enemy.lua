@@ -1,1 +1,0 @@
-_G.enemy = class('enemy',entity)

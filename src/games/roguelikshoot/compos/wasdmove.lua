@@ -1,1 +1,0 @@
-_G.wasdmove = class('wasdmove',component)

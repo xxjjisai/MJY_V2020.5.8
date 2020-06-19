@@ -1,1 +1,0 @@
-_G.item = class('item',entity)

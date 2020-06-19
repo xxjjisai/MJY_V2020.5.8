@@ -1,1 +1,0 @@
-_G.moveshape = class('moveshape',component)

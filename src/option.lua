@@ -20,7 +20,7 @@ _G.g_tbLayer =
 
 _G.g_project = 
 {
-    CUR_PROJECT_NAME = "rpgeditor", -- 当前项目工程名称
+    CUR_PROJECT_NAME = "roguelikechess", -- 当前项目工程名称
     CUR_PROJECT_TYPE = "roguelike", -- 当前项目工程游戏类型，用来区别摄像机类型和渲染层级类型 (roguelike,platform,...)
     CUR_PROJECT_MAINSCENE = "mainscene", -- 当前项目工程主场景名称
     CUR_PROJECT_SCENE_TRANSITION_TIME = 1, -- 当前项目工程场景过渡时长
@@ -34,27 +34,27 @@ _G.g_CommonScript =
 {
     compos = 
     {
-        'position',
-        'animaterender',
-        'shaperender',
-        'size',
-        'sortorder',
-        'title',
-        'speed',
-        'direction',
-        'bumprect',
-        'awaken',
-        'wasdmove',
+        'position',      -- 位移
+        'animaterender', -- 动画渲染
+        'shaperender',   -- 图形渲染
+        'size',          -- 尺寸
+        'sortorder',     -- 渲染顺序
+        'title',         -- 标题
+        'speed',         -- 速度
+        'direction',     -- 方向
+        'bumprect',      -- 阻碍
+        'awaken',        -- 激活
+        'wasdmove',      -- WASD方向键移动
     };
     
     systems = 
     {
-        'animationsystem',
-        'drawshapesystem',
-        'welcomesystem',
-        'bumprectsystem',
-        'awakensystem',
-        'wasdmovesystem',
+        'animationsystem', -- 动画渲染系统
+        'drawshapesystem', -- 图形渲染系统
+        'welcomesystem',   -- 欢迎界面系统
+        'bumprectsystem',  -- 矩形碰撞系统
+        'awakensystem',    -- 范围激活系统
+        'wasdmovesystem',  -- WASD移动系统
     };
 }
 

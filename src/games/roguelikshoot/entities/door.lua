@@ -1,1 +1,0 @@
-_G.door = class('door',entity)
