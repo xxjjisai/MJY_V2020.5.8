@@ -41,7 +41,9 @@ function uimgr:draw()
     for _,iUI in pairs(self.tbUIList) do 
         if iUI then 
             if iUI.draw then 
-                iUI:draw();
+                if iUI.bVisible then 
+                    iUI:draw();
+                end
             end 
         end 
     end

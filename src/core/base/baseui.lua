@@ -64,3 +64,7 @@ function baseui:SetPosition(x,y)
     self:SetData('Position', "x", x);
     self:SetData('Position', "y", y);
 end
+
+function baseui:ShowUI(bShow)
+    self.bVisible = bShow;
+end

@@ -8,7 +8,7 @@ function gamemgr:create()
     love.graphics.setLineStyle('smooth');
 	_G.W, _G.H, _G.flags = love.window.getMode( )
 	_G.windows = { w = W, h = H };
-	_G.BumpWorld = bump.newWorld(64);
+	_G.BumpWorld = bump.newWorld(g_gameCfg.nBumpWorldCellSize);
 	math.randomseed(tostring(os.time()):reverse():sub(1, 6))
 	g_option.GAME_STATE = g_gamestate.LOAD_RES;
 	resmgr:getInstance():create();

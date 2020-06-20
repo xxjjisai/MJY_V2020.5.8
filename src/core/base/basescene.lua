@@ -35,6 +35,7 @@ end
 function basescene:enterScene(...)
     self:onEnterScene(...);
     baseworld:getInstance():enterScene();
+    self:onCreateUI(...);
 end
 
 function basescene:exitScene()
@@ -48,6 +49,14 @@ function basescene:onEnterScene(...)
 
 end
 
+function basescene:onCreateUI(...)
+
+end
+
 function basescene:onExitScene()
 
+end
+
+function basescene:getSystem(sClassName)
+    return baseworld:getInstance():getSystem(sClassName);
 end
