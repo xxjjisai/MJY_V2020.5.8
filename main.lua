@@ -31,6 +31,7 @@ require('src/core/mgrs/inputmgr');
 require('src/core/mgrs/cameramgr');
 
 require('src/core/uis/shapebutton');
+require('src/core/uis/shapetextinput');
 
 require('src/games/start');
 

@@ -85,3 +85,7 @@ function uimgr:keypressed(key)
         end 
     end
 end
+
+function uimgr:SetInputFocus(sFocusid)
+    self.sFocusid = sFocusid;
+end
