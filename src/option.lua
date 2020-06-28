@@ -50,6 +50,7 @@ _G.g_CommonScript =
         'bumprect',      -- 阻碍
         'awaken',        -- 激活
         'wasdmove',      -- WASD方向键移动
+        'moveselect',    -- 移动物体选择
     };
     
     systems = 
@@ -60,12 +61,14 @@ _G.g_CommonScript =
         'bumprectsystem',  -- 矩形碰撞系统
         'awakensystem',    -- 范围激活系统
         'wasdmovesystem',  -- WASD移动系统
+        'moveselectsystem',-- 物体选择系统
     };
 }
 
 _G.g_color = 
 {
     WHITE = {1,1,1,1};  -- 白色
+    BLACK = {0,0,0,1};  -- 黑色
     RED = {1,0,0,1};    -- 红色
     GREEN = {0,1,0,1};  -- 绿色
     BLUE = {0,0,1,1};   -- 蓝色

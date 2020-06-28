@@ -9,7 +9,7 @@ end
 
 function baseui:create()
     -- 装载组件等
-    self:trace(2,"UI not create yet !!!")
+    self:trace(3,"UI not create yet !!!")
 end
 
 function baseui:AddCompo(sCompo,compo)

@@ -18,9 +18,15 @@ function drawshapesystem:StepHandler(iTargetEnt)
     local x = c_position:getAttribute("x");
     local y = c_position:getAttribute("y");
     local c_size = iTargetEnt:getComponent("size");
+    if not c_size then 
+        return;
+    end 
     local w = c_size:getAttribute("w");
     local h = c_size:getAttribute("h");
     local c_shaperender = iTargetEnt:getComponent("shaperender");
+    if not c_shaperender then 
+        return;
+    end 
     local color = c_shaperender:getAttribute("color");
     local shapeType = c_shaperender:getAttribute("shapeType");
     local fillType = c_shaperender:getAttribute("fillType");

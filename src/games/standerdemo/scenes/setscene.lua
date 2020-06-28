@@ -14,10 +14,12 @@ function setscene:onEnterScene()
         local ipt_fenbianlv = uimgr:getInstance():create("shapetextinput","ipt_fenbianlv");
         ipt_fenbianlv:SetPositionCenter(0,-200);
         ipt_fenbianlv:SetText("分辨率");
+        ipt_fenbianlv:SetStyle(1);
 
         local ipt_sounds = uimgr:getInstance():create("shapetextinput","ipt_sounds");
         ipt_sounds:SetPositionCenter(0,-150);
         ipt_sounds:SetText("声音");
+        ipt_sounds:SetStyle(2);
         
         -- local ipt_sounds = uimgr:getInstance():create("shapetextinput","ipt_sounds");
         -- ipt_sounds:SetPositionCenter(-150,-150);

@@ -170,3 +170,28 @@ function shapetextinput:mousepressed(actors,x,y,button)
         end
     end 
  end
+
+--------------------------------------------------- 非核心功能 -----------------------------------------
+function shapetextinput:SetStyle(nType)
+    if nType == 1 then 
+        self:SetData("Style","bBg",true); 
+        self:SetData("Style","bBorder",false); 
+        self:SetData("Style","sborderFill","line"); 
+        self:SetData("Style","sbgFill","fill"); 
+        self:SetData("Style","nFontSize",24); 
+        self:SetData("Style","bgcolor",{1,1,1,0}); 
+        self:SetData("Style","txtcolor",g_color.WHITE); 
+        self:SetData("Style","bordercolor",{1,1,1,0}); 
+        self:SetData("Style","bHoverColor",{0.9,0.9,0.9,0}); 
+    elseif nType == 2 then 
+        self:SetData("Style","bBg",true);
+        self:SetData("Style","bBorder",false);
+        self:SetData("Style","sborderFill","line");
+        self:SetData("Style","sbgFill","fill");
+        self:SetData("Style","nFontSize",24);
+        self:SetData("Style","bgcolor",{1,1,1,1});
+        self:SetData("Style","txtcolor",g_color.BLACK);
+        self:SetData("Style","bordercolor",{1,1,1,1});
+        self:SetData("Style","bHoverColor",{0.9,0.9,0.9,1});
+    end
+end
