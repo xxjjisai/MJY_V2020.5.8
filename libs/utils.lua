@@ -230,6 +230,42 @@ function Dist(ax,ay,bx,by)
     return result;
 end
 
+function GetDir(ox,oy, tx,ty)
+    if tx - ox > 0 and ty - oy > 0 then 
+        -- 右
+        -- 上
+        return 1,-1
+    elseif tx - ox < 0 and ty - oy < 0 then 
+        -- 左
+        -- 下
+        return -1,1
+    elseif tx - ox < 0 and ty - oy > 0 then 
+        -- 左
+        -- 上
+        return -1,-1
+    elseif tx - ox > 0 and ty - oy < 0 then 
+        -- 右
+        -- 下
+        return 1,1
+    elseif tx - ox == 0 and ty - oy > 0 then 
+        -- 右
+        -- 上
+        return 0,1
+    elseif tx - ox == 0 and ty - oy < 0 then 
+        -- 左
+        -- 下
+        return 0,-1
+    elseif tx - ox < 0 and ty - oy == 0 then 
+        -- 左
+        -- 上
+        return -1,0
+    elseif tx - ox > 0 and ty - oy == 0 then 
+        -- 右
+        -- 下
+        return 1,0
+    end
+end
+
 -- ????????????
 function pointdistance(p1,p2)
 	local x = p1.x - p2.x

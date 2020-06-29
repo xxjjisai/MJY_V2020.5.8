@@ -58,10 +58,10 @@ function moveselectsystem:onUpdate(dt)
                     table.insert(self.tbEntList,iTargetEnt.id);
                     local c_shaperender_1 = shaperender:new({
                         order = 1, 
-                        color = { math.random(), math.random(), math.random(),0.5 }, 
+                        color = { 0, 1, 0,0.5 }, 
                         drawType="shape",
                         shapeType = "rectangle",
-                        fillType = "line"
+                        fillType = "fill"
                     });
                     iTargetEnt:addComponent(c_shaperender_1);
                 end

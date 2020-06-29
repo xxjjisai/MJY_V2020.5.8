@@ -20,8 +20,8 @@ _G.enter =
     {
         "mainscene",
         "welcomescene",
+        "helpscene",
         "gamescene",
-        "setscene",
     };
 
     systems = 

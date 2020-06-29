@@ -1,6 +1,6 @@
-_G.setscene = class('setscene',basescene)
+_G.helpscene = class('helpscene',basescene)
 
-function setscene:onEnterScene()
+function helpscene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
         if g_option.DEBUG > 0 then 
             local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "设置", 
@@ -20,18 +20,6 @@ function setscene:onEnterScene()
         ipt_sounds:SetPositionCenter(0,-150);
         ipt_sounds:SetText("声音");
         ipt_sounds:SetStyle(2);
-        
-        -- local ipt_sounds = uimgr:getInstance():create("shapetextinput","ipt_sounds");
-        -- ipt_sounds:SetPositionCenter(-150,-150);
-        -- ipt_sounds:SetText("声音");
-
-        -- local ipt_text = uimgr:getInstance():create("shapetextinput","ipt_text");
-        -- ipt_text:SetPositionCenter(-50,-200);
-        -- ipt_text:SetText("分辨率");
-
-        -- local ipt_text = uimgr:getInstance():create("shapetextinput","ipt_text");
-        -- ipt_text:SetPositionCenter(-0,-200);
-        -- ipt_text:SetText("分辨率");
 
         local btn_cancel = uimgr:getInstance():create("shapebutton","btn_cancel");
         btn_cancel:SetPositionCenter(-150,150 + 55);

@@ -99,6 +99,10 @@ function system:getSystem(sClassName)
     return baseworld:getInstance():getSystem(sClassName);
 end
 
+function system:getEntity(eid)
+    return baseworld:getInstance():getEntity(eid)
+end
+
 function system:addEvent(sSysName)
     baseevent:getInstance():addEvent(baseworld:getInstance():getSystem(sSysName),self);
 end

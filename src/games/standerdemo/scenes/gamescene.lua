@@ -11,9 +11,6 @@ function gamescene:onEnterScene()
         end
         -------------------------------------------------------------------------------------------------
 
-        cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
-        g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
-
         
 
     end)

@@ -35,3 +35,8 @@ end
 function entity:destory()
     self.tbComponent = nil;
 end
+
+function entity:tweenData(sCompoName)
+    local iCompo = self.tbComponent[sCompoName];
+    return iCompo.tbData;
+end
