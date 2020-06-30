@@ -27,6 +27,7 @@ function helpscene:onEnterScene()
         btn_cancel:SetData("Oper", "onClick", function ()
             scenemgr:getInstance():switchScene("welcomescene");
         end)
+        
         local btn_sure = uimgr:getInstance():create("shapebutton","btn_sure");
         btn_sure:SetPositionCenter(150,150 + 55);
         btn_sure:SetText("保存");
