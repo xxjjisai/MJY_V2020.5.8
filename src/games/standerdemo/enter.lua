@@ -1,18 +1,10 @@
 _G.enter = 
 {
-    compos = 
-    {
-
-    };
-    
     configs = 
     {
         "resconfig",
-    };
-
-    entities = 
-    {
-        "actor",
+        "actorconfig",
+        "compoconfig",
     };
 
     scenes = 
@@ -24,6 +16,7 @@ _G.enter =
 
     systems = 
     {
-
+        "welcomesystem",
+        "drawshapesystem",
     };
 }
