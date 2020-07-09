@@ -5,7 +5,7 @@ function welcomescene:onEnterScene()
         local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "标准空工程", 
                                                         sVersion = "V2020.5.8", color = g_color.WHITE});
     
-        local e_gametitle = gametitle:new({c_title});
+        local e_gametitle = actor:new({c_title});
     
         local s_welcomesystem = welcomesystem:new();
 

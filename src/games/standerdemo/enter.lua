@@ -12,8 +12,7 @@ _G.enter =
 
     entities = 
     {
-        "gametitle",
-        "hero",
+        "actor",
     };
 
     scenes = 

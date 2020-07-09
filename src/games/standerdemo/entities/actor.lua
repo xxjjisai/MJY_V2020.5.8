@@ -1,0 +1,1 @@
+_G.actor = class('actor',entity)
