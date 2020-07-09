@@ -17,13 +17,5 @@ function welcomescene:onEnterScene()
         btn_enter:SetData("Oper", "onClick", function ()
             scenemgr:getInstance():switchScene("gamescene");
         end)
-
-        local btn_setting = uimgr:getInstance():create("shapebutton","btn_setting");
-        btn_setting:SetPositionCenter(0,130 + 55);
-        btn_setting:SetText("设置");
-        btn_setting:SetData("Oper", "onClick", function ()
-            scenemgr:getInstance():switchScene("helpscene");
-        end)
-
     end)
 end

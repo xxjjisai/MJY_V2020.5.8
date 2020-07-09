@@ -11,7 +11,12 @@ function gamescene:onEnterScene()
         end
         -------------------------------------------------------------------------------------------------
 
-        
+        -- self:initCamera();
+
+        -- cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
+        -- g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
+
+        -- cameramgr:getInstance():SetFollowPlayer(hero_he);
 
     end)
 end

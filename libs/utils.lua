@@ -728,3 +728,9 @@ function table.unique(t, bArray)
     end
     return n
 end
+
+function MakeCenter(nCellSizeX,nCellSizeY)
+    local x = W/2 - nCellSizeX/2
+    local y = H/2 - nCellSizeY/2
+    return x,y
+end

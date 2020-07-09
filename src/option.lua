@@ -77,6 +77,7 @@ _G.g_color =
     SECURITY = {1,1,1,0.1}; -- 防伪Logo
     NORMAL_AWAKEN = {0.5,1,0.5,0.2}; -- 正常激活
     WARN_AWAKEN = {1,1,0,0.5}; -- 警告激活
+    HERO = {128/255,128/255,0,1}; -- 主角颜色
 }
 
 _G.g_gamestate = 

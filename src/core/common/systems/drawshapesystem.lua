@@ -27,12 +27,21 @@ function drawshapesystem:StepHandler(iTargetEnt)
     if not c_shaperender then 
         return;
     end 
+
+    local nCol = math.floor(x / w) + 1;
+    local nRow = math.floor(y / h) + 1;
+
     local color = c_shaperender:getAttribute("color");
     local shapeType = c_shaperender:getAttribute("shapeType");
     local fillType = c_shaperender:getAttribute("fillType");
     love.graphics.setColor(color);
     if shapeType == "rectangle" then
-        love.graphics.rectangle(fillType,x,y,w,h);
+        love.graphics.rectangle('fill',x,y,w,h);
+        love.graphics.setColor(g_color.WHITE);
+        love.graphics.rectangle('line',x,y,w,h);
+        love.graphics.setFont(resmgr:getInstance():GetFont(12));
+        love.graphics.print(string.format('%s,%s', nCol,nRow),x,y + 10)
+        -- love.graphics.print(string.format('%s,%s', x,y),x,y + 28)
     end
     if shapeType == "circle" then
         love.graphics.circle(fillType,x ,y,w);
