@@ -3,6 +3,7 @@ shapebutton = class("shapebutton",baseui)
 function shapebutton:create()
     self.id = baseorigin:getInstance():getID();
     self.nLayerIndex = 1;
+    self.bBubbling = false;
     local tbCompo = 
     {
         ['Position'] = {x = 100,y = 100};
@@ -55,11 +56,13 @@ function shapebutton:update(dt)
            if not self:GetData("Oper","bHoverMove") then  
               self:GetData("Oper","onHover")();
               self:SetData("Oper","bHoverMove",true);
-           end
+            end
         end
+        self.bBubbling = true;
     else
         self:SetData("Oper","bHover",false);
         self:SetData("Oper","bHoverMove",false);
+        self.bBubbling = false;
     end 
 end
 

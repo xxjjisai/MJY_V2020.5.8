@@ -5,6 +5,7 @@ function baseui:init()
     self.compos = {};
     self.bVisible = true;
     self.nLayerIndex = 1;
+    self.bBubbling = false;
 end
 
 function baseui:create()

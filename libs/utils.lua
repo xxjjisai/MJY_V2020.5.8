@@ -696,6 +696,10 @@ function ColorTransformForLove11(r,g,b)
     return str
 end
 
+function Color(r,g,b,a)
+    return r/255,g/255,b/255,a/255;
+end
+
 -- ������ظ�
 function random_table(t, num)
     for i,v in pairs(t) do

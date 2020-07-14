@@ -4,6 +4,7 @@ function uimgr:create(sUIType,sUIName)
     local ui = _G[sUIType]:new();
     self.tbUIList = self.tbUIList or {};
     self.tbUIList[sUIName] = ui;
+    self.bBubbling = false;
     ui:create();
     return ui;
 end
@@ -88,4 +89,16 @@ end
 
 function uimgr:SetInputFocus(sFocusid)
     self.sFocusid = sFocusid;
+end
+
+function uimgr:IsBubbling()
+    if self.tbUIList == nil then 
+        return 
+    end 
+    for sName,iUI in pairs(self.tbUIList) do 
+        if iUI.bBubbling then 
+            return true;
+        end 
+    end
+    return false;
 end

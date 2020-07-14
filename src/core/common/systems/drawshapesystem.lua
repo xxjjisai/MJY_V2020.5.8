@@ -37,8 +37,8 @@ function drawshapesystem:StepHandler(iTargetEnt)
     love.graphics.setColor(color);
     if shapeType == "rectangle" then
         love.graphics.rectangle('fill',x,y,w,h);
-        -- love.graphics.setColor(g_color.WHITE);
-        -- love.graphics.rectangle('line',x,y,w,h);
+        love.graphics.setColor(g_color.WHITE);
+        love.graphics.rectangle('line',x,y,w,h);
         -- love.graphics.setFont(resmgr:getInstance():GetFont(12));
         -- love.graphics.print(string.format('%s,%s', nCol,nRow),x,y + 10)
         -- love.graphics.print(string.format('%s,%s', x,y),x,y + 28)

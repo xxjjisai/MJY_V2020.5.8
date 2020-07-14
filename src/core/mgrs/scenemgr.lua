@@ -52,6 +52,8 @@ function scenemgr:transitionScene(pfn)
     local pfn = pfn;
     cameramgr:getInstance():Fade(nTime,0,0,0,1,function ()
         if pfn then 
+            cameramgr:getInstance():SetCameraStyle(g_project.CUR_PROJECT_CAMERA_FOLLOWLERP,
+            g_project.CUR_PROJECT_CAMERA_FOLLOWSTYLE,g_project.CUR_PROJECT_CAMERA_SCALE);
             pfn();
             baseworld:getInstance():enterScene();
         end

@@ -18,5 +18,7 @@ _G.enter =
     {
         "welcomesystem",
         "drawshapesystem",
+        "wasdmovesystem",
+        "findpathsystem",
     };
 }

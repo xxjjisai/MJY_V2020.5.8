@@ -10,8 +10,8 @@ _G.camera     = require('libs/Camera')();
 _G.timer      = require('libs/Timer')();
 _G.bump       = require('libs/bump');
 _G.bump_debug = require('libs/bump_debug');
--- _G.Grid = require ("libs/jumper.grid")
--- _G.Pathfinder = require ("libs/jumper.pathfinder")
+_G.Grid = require ("libs/jumper.grid")
+_G.Pathfinder = require ("libs/jumper.pathfinder")
 
 require('src/core/base/baseorigin');
 require('src/core/base/baseclass');

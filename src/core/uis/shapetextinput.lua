@@ -3,6 +3,7 @@ shapetextinput = class("shapetextinput",baseui)
 function shapetextinput:create()
     self.id = baseorigin:getInstance():getID();
     self.nLayerIndex = 1;
+    self.bBubbling = false;
     local tbCompo = 
     {
         ['Position'] = {x = 100,y = 100};
@@ -64,9 +65,11 @@ function shapetextinput:update(dt)
               self:SetData("Oper","bHoverMove",true);
            end
         end
+        self.bBubbling = true;
     else
         self:SetData("Oper","bHover",false); 
         self:SetData("Oper","bHoverMove",false);
+        self.bBubbling = false;
     end 
 end
  

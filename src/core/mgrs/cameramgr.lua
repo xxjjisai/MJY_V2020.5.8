@@ -49,6 +49,10 @@ function cameramgr:update(dt)
     self:Follow();
 end 
 
+function cameramgr:TweenScale(nTime,nScale,pfn)
+    timer:tween(nTime, camera, {scale = nScale}, 'in-out-cubic', pfn)
+end
+
 function cameramgr:Follow()  
     if not self.iFollowPlayer then return end;
     local iTargetEnt = self.iFollowPlayer;
