@@ -12,7 +12,9 @@ local tbCompoList =
     'speed',
     'title',
     'wasdmove',
-    'heroopr',
+    'playeropr',
+    'actormove',
+    'collect',
 }
 
 for _,sCompoName in ipairs(tbCompoList) do 

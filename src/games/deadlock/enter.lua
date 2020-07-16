@@ -5,6 +5,9 @@ _G.enter =
         "resconfig",
         "actorconfig",
         "compoconfig",
+        "mapconfig",
+        "map15",
+        "errortextconfig",
     };
 
     scenes = 
@@ -20,5 +23,11 @@ _G.enter =
         "drawshapesystem",
         "wasdmovesystem",
         "bumprectsystem",
+        "actormovesystem",
+        "findpathsystem",
+        "mapsystem",
+        "playeropersystem",
+        "buildsystem",
+        "collectmineralsystem",
     };
 }

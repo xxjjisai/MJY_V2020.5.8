@@ -1,0 +1,36 @@
+    -- if button == 2 then 
+    --     for i,iTargetEnt in ipairs(self:getTargets()) do 
+    --         local hx = iTargetEnt:getComponent("position"):getAttribute("x");
+    --         local hy = iTargetEnt:getComponent("position"):getAttribute("y");
+    --         local tbStart = { x = hx, y = hy };
+    --         local tbEnd = { x = mx, y = my };
+    --         self:getSystem('findpathsystem'):FindWay(1,tbStart,tbEnd,function (tbPathList)
+    --             self:getSystem('actormovesystem'):MovePath(iTargetEnt,tbPathList,function ()
+    --                 -- self:trace(1,'move complete');
+    --             end)
+    --         end)
+    --     end
+    -- end 
+
+        local btn_enter = uimgr:getInstance():create("shapebutton","btn_enter");
+        btn_enter:SetPositionCenter(0,130);
+        btn_enter:SetText("生成");
+        btn_enter:SetData("Oper", "onClick", function ()
+            local c_position = position:new({ x = 160, y = 160 });
+            local c_size = size:new({ w = 32, h = 32 });
+            local c_playeropr = playeropr:new();
+            local c_actormove = actormove:new({
+                bStartMove = false;
+                tbPathList = nil;
+                nMoveTime = 0.2;
+                fCompleteHandler = nil;
+                bMoving = false;
+            });
+            local c_shaperender = shaperender:new({
+                color = g_color.RED, 
+                drawType="shape",
+                shapeType = "rectangle", 
+                fillType = "fill"
+            });
+            local e_hero = actor:new({c_position,c_size,c_playeropr,c_actormove,c_shaperender}); 
+        end)

@@ -22,6 +22,11 @@ function baseworld:addEntity(iEnt)
     self.tbEntitiesList[sEntName] = iEnt;
     iEnt.name = sEntName;
     iEnt.sType = iEnt.class.name;
+    local nNum = 0;
+    for i,v in pairs(self.tbEntitiesList) do 
+        nNum = nNum + 1;
+    end 
+    self:trace(1,string.format('entity num is : %d', nNum))
 end
 
 function baseworld:getEntity(id)
