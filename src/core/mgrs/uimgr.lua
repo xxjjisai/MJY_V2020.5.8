@@ -24,6 +24,34 @@ function uimgr:remove(ui)
     return;
 end
 
+function uimgr:getByName(sNamex)
+    if self.tbUIList == nil then 
+        return 
+    end 
+    local tmp_ui = nil;
+    for sName,iUI in pairs(self.tbUIList) do 
+        if sName == sNamex then 
+            tmp_ui = iUI;
+            break;
+        end 
+    end
+    return tmp_ui;
+end
+
+function uimgr:getByID(id)
+    if self.tbUIList == nil then 
+        return 
+    end 
+    local tmp_ui = nil;
+    for sName,iUI in pairs(self.tbUIList) do 
+        if iUI.id == ui.id then 
+            tmp_ui = iUI;
+            break;
+        end 
+    end
+    return tmp_ui;
+end
+
 function uimgr:destory()
     if self.tbUIList == nil then 
         return 

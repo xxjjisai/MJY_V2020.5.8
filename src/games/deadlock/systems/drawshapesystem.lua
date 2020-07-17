@@ -30,7 +30,7 @@ function drawshapesystem:StepHandler(iTargetEnt)
 
     local nCol = math.floor(x / w) + 1;
     local nRow = math.floor(y / h) + 1;
-
+    local nSideCount = c_shaperender:getAttribute("nSideCount");
     local color = c_shaperender:getAttribute("color");
     local shapeType = c_shaperender:getAttribute("shapeType");
     local fillType = c_shaperender:getAttribute("fillType");
@@ -44,6 +44,6 @@ function drawshapesystem:StepHandler(iTargetEnt)
         -- love.graphics.print(string.format('%s,%s', x,y),x,y + 28)
     end
     if shapeType == "circle" then
-        love.graphics.circle(fillType,x ,y,w);
+        love.graphics.circle(fillType,x ,y,w,nSideCount);
     end
 end

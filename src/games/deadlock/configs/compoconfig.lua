@@ -15,6 +15,7 @@ local tbCompoList =
     'playeropr',
     'actormove',
     'collect',
+    'tiletype',
 }
 
 for _,sCompoName in ipairs(tbCompoList) do 

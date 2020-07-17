@@ -29,5 +29,7 @@ _G.enter =
         "playeropersystem",
         "buildsystem",
         "collectmineralsystem",
+        "tilesystem",
+        "playersystem",
     };
 }

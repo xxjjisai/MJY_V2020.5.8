@@ -39,14 +39,14 @@ function buildsystem:BuildMineral(nMRow,nMCol,nMapType)
         end
     end 
     if iExist ~= nil then return errorcode.error_code_11 end;
-    local nSize = 5;
+    local nSize = 10;
     local px = (nMCol-1) * g_gameCfg.nBumpWorldCellSize+ g_gameCfg.nBumpWorldCellSize/2;
     local py = (nMRow-1) * g_gameCfg.nBumpWorldCellSize+ g_gameCfg.nBumpWorldCellSize/2;
     local c_pos = position:new({ x = px, y = py });
     local c_siz = size:new({ w = nSize, h = nSize });
-    local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN_DOWN});
+    local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.SKY});
     local c_shaperender = shaperender:new({ 
-        color = tilecolorconfig[100 + nMapType],
+        color = mineralcolorconfig[100 + nMapType],
         nSideCount = 3;
         drawType="shape",
         shapeType = "circle", 
@@ -65,7 +65,7 @@ function buildsystem:BuildMineral(nMRow,nMCol,nMapType)
 end
 
 function buildsystem:BuildTile(nMRow,nMCol,nMapType)
-    if nMapType == 1 or nMapType == 0 then return errorcode.error_code_10 end;
+    if nMapType == 0 then return errorcode.error_code_10 end;
     self.tbTileList = self.tbTileList or {};
     local iExist = nil;
     for i,v in ipairs(self.tbTileList) do 
@@ -73,7 +73,15 @@ function buildsystem:BuildTile(nMRow,nMCol,nMapType)
             iExist = v; 
         end
     end 
-    if iExist ~= nil then return errorcode.error_code_11 end;
+    if iExist ~= nil then 
+        if nMapType == 1 then 
+            baseworld:getInstance():removeEntity(iExist.coreID);
+        end 
+        return errorcode.error_code_11 
+    end;
+    if nMapType == 1 then 
+        return errorcode.error_code_10
+    end 
     --todo...随机一个事件，如物品或者怪物，如果随机出来怪物，需要根据当前实力生成数值
     --todo...根据事件来明确此地是否可以铺设
     local nSize = g_gameCfg.nBumpWorldCellSize;
@@ -81,13 +89,20 @@ function buildsystem:BuildTile(nMRow,nMCol,nMapType)
     local py = (nMRow-1) * g_gameCfg.nBumpWorldCellSize + g_gameCfg.nBumpWorldCellSize/2 - nSize/2;
     local c_pos = position:new({ x = px, y = py });
     local c_siz = size:new({ w = nSize, h = nSize });
+    local c_tiletype = tiletype:new({
+        nMapType = nMapType;
+        nCreateTime = GetTime();
+        nJianGe = 10;
+        nLastTime = GetTime();
+        nHasMineral = false;
+    });
     local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.GROUND});
     local c_shaperender = shaperender:new({ 
-        color = tilecolorconfig[100 + nMapType],
+        color = g_color.ALPHA; --tilecolorconfig[100 + nMapType],
         drawType="shape",
         shapeType = "rectangle", 
         fillType = "fill"});
-    local c_core = actor:new({c_pos,c_siz,c_shaperender,c_sortorder});
+    local c_core = actor:new({c_pos,c_siz,c_shaperender,c_sortorder,c_tiletype});
     table.insert(self.tbTileList,{ 
         -- iEnt = c_core;
         nMapType = nMapType, 
@@ -108,7 +123,7 @@ function buildsystem:BuildCore(nMRow,nMCol,nMapType)
         end
     end 
     if iExist ~= nil then return errorcode.error_code_11 end;
-    local nSize = 10;
+    local nSize = 13;
     -- 核芯堆
     local px = (nMCol-1) * g_gameCfg.nBumpWorldCellSize + g_gameCfg.nBumpWorldCellSize/2 - nSize/2;
     local py = (nMRow-1) * g_gameCfg.nBumpWorldCellSize + g_gameCfg.nBumpWorldCellSize/2 - nSize/2;
@@ -136,7 +151,7 @@ function buildsystem:BuildCore(nMRow,nMCol,nMapType)
     });
     local c_shaperender = shaperender:new({ 
         color = {1,1,1,1},
-        nSideCount = 3;
+        nSideCount = 5;
         drawType="shape",
         shapeType = "circle", 
         fillType = "line"

@@ -27,7 +27,7 @@ _G.g_project =
     CUR_PROJECT_RES_CONFIG_PATH = 'resconfig',  -- 当前项目工程资源配置表名称
     CUR_PROJECT_CAMERA_FOLLOWLERP = 0.03,       -- 当前项目工程摄像机跟随插值
     CUR_PROJECT_CAMERA_FOLLOWSTYLE = 'LOCKON',  -- 当前项目工程摄像机跟随类型
-    CUR_PROJECT_CAMERA_SCALE = 1,               -- 当前项目工程摄像机缩放倍数
+    CUR_PROJECT_CAMERA_SCALE = 0.3,               -- 当前项目工程摄像机缩放倍数
     CUR_PROJECT_FINDPATHTYPE = 'ASTAR',         -- 当前项目工程寻路算法 'ASTAR','DIJKSTRA''THETASTAR''BFS''DFS''JPS'
 }
 

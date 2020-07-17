@@ -54,5 +54,8 @@ function findpathsystem:FindWay(walkable,p1,p2,pfn)
         end
     else 
         -- self:trace(2,"Path Not Found!")
+        if pfn then
+            pfn(nil);
+        end
     end 
 end

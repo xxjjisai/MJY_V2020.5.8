@@ -18,8 +18,23 @@ function playeropersystem:mousepressed(x,y,button)
     local tbMap = self:getSystem('mapsystem'):getCurMap();
     local mx,my = cameramgr:getInstance():GetMousePosition();
     local nMCol,nMRow = math.floor(mx/g_gameCfg.nBumpWorldCellSize) + 1,math.floor(my/g_gameCfg.nBumpWorldCellSize) + 1;
+    if tbMap[nMRow] == nil then 
+        return 
+    end 
+    if tbMap[nMRow][nMCol] == nil then 
+        return;
+    end 
+    if tbMap[nMRow][nMCol] == -1 then 
+        return;
+    end 
+    if tbMap[nMRow][nMCol] == 0 then 
+        return;
+    end 
     if button == 1 then 
         if self.nBuildOrMap == 1 then -- 设置地图类型
+            if tbMap[nMRow][nMCol] ~= 1 then 
+                return;
+            end 
             tbMap[nMRow][nMCol] = self.nChangeMapType;
             local nErrorCode = self:getSystem('buildsystem'):BuildTile(nMRow,nMCol,tbMap[nMRow][nMCol]);
             if nErrorCode == errorcode.error_code_11 then 
@@ -45,14 +60,4 @@ end
 
 function playeropersystem:GetBuildOrMap()
     return self.nBuildOrMap
-end
-
-function playeropersystem:keypressed(key)
-    if key == "h" then 
-        local tbMap = self:getSystem('mapsystem'):getCurMap();
-        local mx,my = cameramgr:getInstance():GetMousePosition();
-        local nMCol,nMRow = math.floor(mx/g_gameCfg.nBumpWorldCellSize) + 1,math.floor(my/g_gameCfg.nBumpWorldCellSize) + 1;
-        local nErrorCode = self:getSystem('buildsystem'):BuildMineral(nMRow,nMCol,tbMap[nMRow][nMCol]);
-        self:trace(1,errortext[nErrorCode])
-    end 
 end

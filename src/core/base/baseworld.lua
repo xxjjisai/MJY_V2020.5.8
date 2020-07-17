@@ -49,15 +49,20 @@ function baseworld:getEntityByType(sType)
 end
 
 function baseworld:removeEntity(id)
-    for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
+    local sDel = nil;
+    for sEntName,tmp_iEnt in pairs(self.tbEntitiesList) do 
         if tmp_iEnt.id == id then 
             if BumpWorld:hasItem(tmp_iEnt) then 
                 BumpWorld:remove(tmp_iEnt)
             end
             tmp_iEnt:destory();
             tmp_iEnt = nil;
+            sDel = sEntName;
         end 
     end 
+    if sDel then 
+        self.tbEntitiesList[sDel] = nil;
+    end
 end
 
 function baseworld:registerSystem(iSys)

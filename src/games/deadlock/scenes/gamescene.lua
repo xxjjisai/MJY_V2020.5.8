@@ -2,12 +2,17 @@ _G.gamescene = class('gamescene',basescene)
 
 function gamescene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
-        if g_option.DEBUG > 0 then 
-            local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "游戏", 
-                                                            sVersion = "V2020.5.8", color = g_color.SECURITY});
-            local e_gametitle = actor:new({c_title});
-            local s_welcomesystem = welcomesystem:new();
-        end
+        -- if g_option.DEBUG > 0 then 
+        --     local c_title = title:new({ nTitleNameFontSize = 72, nVersionFontSize = 22, sTitleName = "游戏", 
+        --                                                     sVersion = "V2020.5.8", color = g_color.SECURITY});
+        --     local e_gametitle = actor:new({c_title});
+        --     local s_welcomesystem = welcomesystem:new();
+        -- end
+
+        cameramgr:getInstance():TweenScale(1,1.2,function () 
+            cameramgr:getInstance():TweenScale(3,0.5,function () end);
+        end);
+
         local s_drawshapesystem = drawshapesystem:new();
         local s_wasdmovesystem = wasdmovesystem:new();
         local s_bumprectsystem = bumprectsystem:new();
@@ -17,6 +22,8 @@ function gamescene:onEnterScene()
         local s_playeropersystem = playeropersystem:new();
         local s_buildsystem = buildsystem:new();
         local s_collectmineralsystem = collectmineralsystem:new();
+        local s_tilesystem = tilesystem:new();
+        local s_playersystem = playersystem:new();
 
         scenemgr:getInstance():startupSystem(0.1,function ()
             s_drawshapesystem:startup();
@@ -28,12 +35,28 @@ function gamescene:onEnterScene()
             s_playeropersystem:startup();
             s_buildsystem:startup();
             s_collectmineralsystem:startup();
+            s_tilesystem:startup();
+            s_playersystem:startup();
         end)
         self:getSystem('mapsystem'):MakeMap();
         self:CreateCameraFollowActor();
+        -- self:CreatePlanetSide();
         self:CreateSide();
         self:CreateUI();
     end)
+end
+
+function gamescene:CreatePlanetSide()
+    local c_pos = position:new({ x = 16 * g_gameCfg.nBumpWorldCellSize, y = 16 * g_gameCfg.nBumpWorldCellSize });
+    local c_siz = size:new({ w = 16 * g_gameCfg.nBumpWorldCellSize, h = 16 * g_gameCfg.nBumpWorldCellSize });
+    local c_shaperender = shaperender:new({ 
+        color = {1,1,1,0.1},
+        drawType="shape",
+        shapeType = "circle", 
+        nSideCount = 100,
+        fillType = "fill"
+    });
+    local c_planet = actor:new({c_pos,c_siz,c_shaperender});
 end
 
 function gamescene:CreateCameraFollowActor()
@@ -93,15 +116,23 @@ function gamescene:CreateUI()
         local btn_mapbuild = uimgr:getInstance():create("shapebutton","btn_mapbuild"..v.sName);
         btn_mapbuild:SetPosition(v.x, v.y);
         btn_mapbuild:SetSize(v.w,v.h);
-        btn_mapbuild:SetText(v.sName);
-        btn_mapbuild:SetData("Style", "bgcolor", {1,0.3,0.3,1});
-        btn_mapbuild:SetData("Style", "bHoverColor", {1,0.5,0.5,1});
+        btn_mapbuild:SetText(' ');
+        btn_mapbuild:SetData("Style", "bgcolor", v.color);--{1,0.3,0.3,1});
+        -- btn_mapbuild:SetData("Style", "bHoverColor", {1,0.5,0.5,1});
         btn_mapbuild:SetData("Oper", "onClick", function ()
             self:getSystem('playeropersystem'):SetBuildOrMap(1);
             self:getSystem('playeropersystem'):SetChangeMapType(v.nType);
         end)
         btn_mapbuild.bVisible = false;
         table.insert(tbMapBuildList, btn_mapbuild);
+
+        local ipt_mapbuild = uimgr:getInstance():create("shapetextinput","ipt_mapbuild"..v.sName);
+        ipt_mapbuild:SetPosition(v.x + v.w + 2, v.y);
+        ipt_mapbuild:SetSize(80,40);
+        ipt_mapbuild:SetText(" ");
+        ipt_mapbuild:SetStyle(1);
+        ipt_mapbuild.bVisible = false;
+        table.insert(tbMapBuildList, ipt_mapbuild);
     end 
 
     local btn_build = uimgr:getInstance():create("shapebutton","btn_build");
