@@ -17,5 +17,7 @@ _G.resconfig=
         {sName = "rabbit" , sPath = "res/images/rabbit.png"},
         {sName = "trees" , sPath = "res/images/trees.png"},
         {sName = "mt_4" , sPath = "res/images/mt_4.png"},
+        {sName = "tile_2" , sPath = "src/games/deadlock/assets/images/tile_2.png"},
+        {sName = "rokt" , sPath = "src/games/deadlock/assets/images/rokt.png"},
     },
 }

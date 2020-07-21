@@ -10,4 +10,13 @@ end
 function inputmgr:keypressed(key)
     uimgr:getInstance():keypressed(key)
     baseworld:getInstance():keypressed(key)
+    if key == 'escape' then 
+        love.event.quit();
+    end 
+    if key == 'x' then 
+        g_option.DEBUG = 0;
+    end 
+    if key == 'C' then 
+        g_option.DEBUG = 2;
+    end 
 end

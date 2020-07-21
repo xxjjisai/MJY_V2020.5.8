@@ -13,7 +13,11 @@ function baseevent:addEvent(tbDistributor,tbListener)
 end 
 
 function baseevent:removeEvent(tbListener,tbDistributor)
-    tbDistributor.tbListenerList[tbListener.id] = nil;
+    tbDistributor.tbListenerList = tbDistributor.tbListenerList or {};
+    tbDistributor.tbListenerList[tbListener.id] = tbDistributor.tbListenerList[tbListener.id] or nil;
+    if tbDistributor.tbListenerList then 
+        tbDistributor.tbListenerList[tbListener.id] = nil;
+    end 
 end  
 
 function baseevent:doEvent(tbDistributor,sFuncName,...)

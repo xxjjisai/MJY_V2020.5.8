@@ -21,6 +21,7 @@ _G.enter =
     {
         "welcomesystem",
         "drawshapesystem",
+        "animationsystem",
         "wasdmovesystem",
         "bumprectsystem",
         "actormovesystem",

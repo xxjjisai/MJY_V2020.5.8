@@ -59,7 +59,7 @@ end
 --         local tbPathList = c_actormove.tbPathList;
 --         tbPathList = tbPathList or {};
 --         for i,v in ipairs(tbPathList) do 
---             love.graphics.setColor(1,1,0,1);
+--             love.graphics.setColor(1,1,0,0.3);
 --             love.graphics.rectangle("fill",(v.x - 1) * g_gameCfg.nBumpWorldCellSize,(v.y - 1) * g_gameCfg.nBumpWorldCellSize,g_gameCfg.nBumpWorldCellSize,g_gameCfg.nBumpWorldCellSize);
 --             love.graphics.setColor(1,1,1,1);
 --             love.graphics.rectangle("line",(v.x - 1) * g_gameCfg.nBumpWorldCellSize,(v.y - 1) * g_gameCfg.nBumpWorldCellSize,g_gameCfg.nBumpWorldCellSize,g_gameCfg.nBumpWorldCellSize);

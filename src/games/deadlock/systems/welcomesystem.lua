@@ -16,7 +16,7 @@ function welcomesystem:onDraw()
         love.graphics.setFont(resmgr:GetFont(nTitleNameFontSize));
         love.graphics.print(sTitleName, (windows.w*0.5) - resmgr:GetFont(nTitleNameFontSize):getWidth(sTitleName)*0.5,
         (windows.h*0.5) - resmgr:GetFont(nTitleNameFontSize):getHeight(sTitleName)*0.5);
-        love.graphics.setFont(resmgr:GetFont(nVersionFontSize)); 
-        love.graphics.print(sVersion, 10, windows.h - resmgr:GetFont(nVersionFontSize):getHeight(sVersion) - 10);
+        -- love.graphics.setFont(resmgr:GetFont(nVersionFontSize)); 
+        -- love.graphics.print(sVersion, 10, windows.h - resmgr:GetFont(nVersionFontSize):getHeight(sVersion) - 10);
     end 
 end

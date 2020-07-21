@@ -92,7 +92,7 @@ function buildsystem:BuildTile(nMRow,nMCol,nMapType)
     local c_tiletype = tiletype:new({
         nMapType = nMapType;
         nCreateTime = GetTime();
-        nJianGe = 10;
+        nJianGe = math.random(10,20);
         nLastTime = GetTime();
         nHasMineral = false;
     });
@@ -144,14 +144,14 @@ function buildsystem:BuildCore(nMRow,nMCol,nMapType)
     local c_siz = size:new({ w = 10, h = 10 });
     local c_sortorder = sortorder:new({nLayerIndex = g_tbLayer.HUMAN});
     local c_actormove = actormove:new({
-        nMoveTime = 0.3;
+        nMoveTime = math.random(0.1,0.4);
     });
     local c_collect = collect:new({
         nWalkAbled = nMapType,
     });
     local c_shaperender = shaperender:new({ 
         color = {1,1,1,1},
-        nSideCount = 5;
+        nSideCount = 100;
         drawType="shape",
         shapeType = "circle", 
         fillType = "line"

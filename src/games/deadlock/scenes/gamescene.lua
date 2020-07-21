@@ -9,21 +9,18 @@ function gamescene:onEnterScene()
         --     local s_welcomesystem = welcomesystem:new();
         -- end
 
-        cameramgr:getInstance():TweenScale(1,1.2,function () 
-            cameramgr:getInstance():TweenScale(3,0.5,function () end);
-        end);
-
         local s_drawshapesystem = drawshapesystem:new();
         local s_wasdmovesystem = wasdmovesystem:new();
+        local s_animationsystem = animationsystem:new();
         local s_bumprectsystem = bumprectsystem:new();
         local s_actormovesystem = actormovesystem:new();
         local s_findpathsystem = findpathsystem:new();
-        local s_mapsystem = mapsystem:new();
         local s_playeropersystem = playeropersystem:new();
         local s_buildsystem = buildsystem:new();
         local s_collectmineralsystem = collectmineralsystem:new();
         local s_tilesystem = tilesystem:new();
         local s_playersystem = playersystem:new();
+        local s_mapsystem = mapsystem:new();
 
         scenemgr:getInstance():startupSystem(0.1,function ()
             s_drawshapesystem:startup();
@@ -37,12 +34,41 @@ function gamescene:onEnterScene()
             s_collectmineralsystem:startup();
             s_tilesystem:startup();
             s_playersystem:startup();
+            s_animationsystem:startup();
         end)
+
+        
+        -- self:CreateRokt();
         self:getSystem('mapsystem'):MakeMap();
         self:CreateCameraFollowActor();
-        -- self:CreatePlanetSide();
+        self:CreatePlanetSide();
         self:CreateSide();
         self:CreateUI();
+    end)
+end
+
+function gamescene:CreateRokt()
+    local c_position = position:new({ x = (g_gameCfg.nBumpWorldCellSize * 32)/2 - g_gameCfg.nBumpWorldCellSize/2, y = -2000 });
+    local c_size = size:new({ w = g_gameCfg.nBumpWorldCellSize, h = g_gameCfg.nBumpWorldCellSize });
+    local c_direction = direction:new({x = 1, y= 1 });
+    local c_speed = speed:new({speed=450}); 
+    local c_animaterender = animaterender:new({
+        bRunning = true, 
+        color = g_color.RED, 
+        nStartFrame = 1, 
+        nEndFrame = 1, 
+        bStartPlay = true, 
+        sImg = "rokt", 
+        nQuadW = 32, 
+        nQuadH = 32, 
+        nTotalFrame= 1, 
+        nLoop = 1, 
+        nTotalPlayCount = 0, 
+        nTimeAfterPlay = 0.15 
+    });
+    local e_rokt = actor:new({c_position,c_size,c_direction,c_speed,c_animaterender});
+    timer:tween(3, e_rokt:tweenData('position'), { y = (g_gameCfg.nBumpWorldCellSize * 32)/2 - g_gameCfg.nBumpWorldCellSize/2 }, 'in-out-cubic', function() 
+
     end)
 end
 
@@ -117,6 +143,10 @@ function gamescene:CreateUI()
         btn_mapbuild:SetPosition(v.x, v.y);
         btn_mapbuild:SetSize(v.w,v.h);
         btn_mapbuild:SetText(' ');
+        -- if i == 1 then 
+        --     btn_mapbuild:SetData("Image", "bNeedImg",true);
+        --     btn_mapbuild:SetData("Image", "sImg","tile_2");
+        -- end 
         btn_mapbuild:SetData("Style", "bgcolor", v.color);--{1,0.3,0.3,1});
         -- btn_mapbuild:SetData("Style", "bHoverColor", {1,0.5,0.5,1});
         btn_mapbuild:SetData("Oper", "onClick", function ()
@@ -159,5 +189,15 @@ function gamescene:CreateUI()
         else 
             btn_map:SetText("+");
         end
+    end)
+
+
+    local btn_menu = uimgr:getInstance():create("shapebutton","btn_menu");
+    btn_menu:SetPosition(W - 82, H - 42);
+    btn_menu:SetSize(80,40);
+    btn_menu:SetText("菜单");
+    btn_menu:SetData("Style", "nFontSize", 20);
+    btn_menu:SetData("Oper", "onClick", function ()
+        scenemgr:getInstance():switchScene("welcomescene");
     end)
 end

@@ -8,6 +8,11 @@ function shapebutton:create()
     {
         ['Position'] = {x = 100,y = 100};
         ['Size'] = {w = 90,h = 50};
+        ['Image'] = { 
+            bNeedImg = false;
+            color = {1,1,1,1};
+            sImg = '';
+        };
         ['Oper'] = {
             onClick = nil; -- 点击
             onHover = nil; -- 滑入
@@ -107,8 +112,17 @@ function shapebutton:draw()
     local nFonty = ((self:GetData("Position","y") + self:GetData("Size","h")*0.5)) - font:getHeight(self:GetData("Style","sText"))*0.5;
     love.graphics.print(self:GetData("Style","sText"),nFontx,nFonty)
     love.graphics.setColor(1,1,1,1);
+    
+    if self:GetData("Image","bNeedImg") then 
+        local sImg_color = self:GetData("Image","color");
+        local sImg_sImg = self:GetData("Image","sImg");
+        local sImg_iImage = resmgr:getInstance():GetTexture(sImg_sImg);
+        local sImg_nImgW,sImg_nImgH = sImg_iImage:getWidth(), sImg_iImage:getHeight();
+        love.graphics.setColor(1,1,1,1);
+        love.graphics.draw(sImg_iImage, self:GetData("Position","x"),self:GetData("Position","y"));
+        love.graphics.setColor(1,1,1,1);
+    end
 
-    -- love.graphics.setStencilTest()
 end
 
 function shapebutton:mousepressed(x,y,button)

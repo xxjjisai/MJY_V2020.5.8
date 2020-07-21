@@ -43,7 +43,7 @@ function cameramgr:update(dt)
     -- 还原镜头
     local keyu = love.keyboard.isDown("o");
     if keyu then  
-        camera.scale = 1;
+        camera.scale = g_project.CUR_PROJECT_CAMERA_SCALE;
     end 
     camera:update(dt);
     self:Follow();
@@ -51,6 +51,10 @@ end
 
 function cameramgr:TweenScale(nTime,nScale,pfn)
     timer:tween(nTime, camera, {scale = nScale}, 'in-out-cubic', pfn)
+end
+
+function cameramgr:TweenRotate(nTime,nRotate,pfn)
+    timer:tween(nTime, camera, {rotation = nRotate * math.pi}, 'in-out-cubic', pfn)
 end
 
 function cameramgr:Follow()  
