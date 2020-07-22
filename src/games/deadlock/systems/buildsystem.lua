@@ -8,12 +8,14 @@ function buildsystem:onEnterScene()
     self.tbCoreList = {};
     self.tbTileList = {};
     self.tbMineralTypeList = {};
+    self.tbMapBuildList = {};
 end
 
 function buildsystem:onExitScene()
     self.tbCoreList = nil;
     self.tbTileList = nil;
     self.tbMineralTypeList = nil;
+    self.tbMapBuildList = nil;
 end
 
 function buildsystem:getCoreList()
@@ -28,8 +30,23 @@ function buildsystem:getMineralList()
     return self.tbMineralTypeList;
 end
 
+function buildsystem:SetMapBuild(nCol,nRow,bIn)
+    self.tbMapBuildList = self.tbMapBuildList or {};
+    self.tbMapBuildList[nCol] = self.tbMapBuildList[nCol] or {};
+    self.tbMapBuildList[nCol][nRow] = bIn;
+end
+
+function buildsystem:CheckInTile(nCol,nRow)
+    self.tbMapBuildList = self.tbMapBuildList or {};
+    self.tbMapBuildList[nCol] = self.tbMapBuildList[nCol] or {};
+    self.tbMapBuildList[nCol][nRow] = self.tbMapBuildList[nCol][nRow] or false;
+    return self.tbMapBuildList[nCol][nRow];
+end 
+
 function buildsystem:BuildMineral(nMRow,nMCol,nMapType)
-    if nMapType == 1 or nMapType == 0 then return errorcode.error_code_10 end;
+    if nMapType == 1 or nMapType == 0 then 
+        return errorcode.error_code_10 
+    end;
     self.tbMineralTypeList = self.tbMineralTypeList or {};
     self.tbMineralTypeList[nMapType] = self.tbMineralTypeList[nMapType] or {};
     local iExist = nil;
@@ -39,6 +56,11 @@ function buildsystem:BuildMineral(nMRow,nMCol,nMapType)
         end
     end 
     if iExist ~= nil then return errorcode.error_code_11 end;
+    if not self:getSystem("buildsystem"):CheckInTile(nMCol,nMRow) then 
+        self:getSystem("buildsystem"):SetMapBuild(nMCol,nMRow,true);
+    else 
+        return errorcode.error_code_11;
+    end 
     local nSize = 10;
     local px = (nMCol-1) * g_gameCfg.nBumpWorldCellSize+ g_gameCfg.nBumpWorldCellSize/2;
     local py = (nMRow-1) * g_gameCfg.nBumpWorldCellSize+ g_gameCfg.nBumpWorldCellSize/2;
@@ -123,6 +145,12 @@ function buildsystem:BuildCore(nMRow,nMCol,nMapType)
         end
     end 
     if iExist ~= nil then return errorcode.error_code_11 end;
+    if not self:getSystem("buildsystem"):CheckInTile(nMCol,nMRow) then 
+        self:getSystem("buildsystem"):SetMapBuild(nMCol,nMRow,true);
+    else 
+        -- self:trace(1,string.format('end create nMCol:%s,nMRow:%s', nMCol,nMRow));
+        return errorcode.error_code_11;
+    end 
     local nSize = 13;
     -- 核芯堆
     local px = (nMCol-1) * g_gameCfg.nBumpWorldCellSize + g_gameCfg.nBumpWorldCellSize/2 - nSize/2;

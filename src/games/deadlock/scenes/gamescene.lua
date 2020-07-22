@@ -1,5 +1,9 @@
 _G.gamescene = class('gamescene',basescene)
 
+function basescene:onExitScene()
+    g_project.CUR_PROJECT_CAMERA_SCALE = 0.1;
+end
+
 function gamescene:onEnterScene()
     scenemgr:getInstance():transitionScene( function ()
         -- if g_option.DEBUG > 0 then 
@@ -8,6 +12,10 @@ function gamescene:onEnterScene()
         --     local e_gametitle = actor:new({c_title});
         --     local s_welcomesystem = welcomesystem:new();
         -- end
+        cameramgr:TweenScale(3,0.55,function ()
+            g_project.CUR_PROJECT_CAMERA_SCALE = 0.55;
+            self:CreateUI();
+        end)
 
         local s_drawshapesystem = drawshapesystem:new();
         local s_wasdmovesystem = wasdmovesystem:new();
@@ -43,7 +51,7 @@ function gamescene:onEnterScene()
         self:CreateCameraFollowActor();
         self:CreatePlanetSide();
         self:CreateSide();
-        self:CreateUI();
+        
     end)
 end
 
