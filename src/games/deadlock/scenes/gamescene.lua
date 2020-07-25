@@ -29,6 +29,7 @@ function gamescene:onEnterScene()
         local s_tilesystem = tilesystem:new();
         local s_playersystem = playersystem:new();
         local s_mapsystem = mapsystem:new();
+        local s_armysystem = armysystem:new();
 
         scenemgr:getInstance():startupSystem(0.1,function ()
             s_drawshapesystem:startup();
@@ -43,6 +44,7 @@ function gamescene:onEnterScene()
             s_tilesystem:startup();
             s_playersystem:startup();
             s_animationsystem:startup();
+            s_armysystem:startup();
         end)
 
         
@@ -148,7 +150,7 @@ function gamescene:CreateUI()
     local tbMapBuildList = {};
     for i,v in ipairs(maptypeconfig) do 
         local btn_mapbuild = uimgr:getInstance():create("shapebutton","btn_mapbuild"..v.sName);
-        btn_mapbuild:SetPosition(v.x, v.y);
+        btn_mapbuild:SetPosition(3, (H - 43) - (i * (40 + 3)));
         btn_mapbuild:SetSize(v.w,v.h);
         btn_mapbuild:SetText(' ');
         -- if i == 1 then 
@@ -158,33 +160,56 @@ function gamescene:CreateUI()
         btn_mapbuild:SetData("Style", "bgcolor", v.color);--{1,0.3,0.3,1});
         -- btn_mapbuild:SetData("Style", "bHoverColor", {1,0.5,0.5,1});
         btn_mapbuild:SetData("Oper", "onClick", function ()
-            self:getSystem('playeropersystem'):SetBuildOrMap(1);
+            self:getSystem('playeropersystem'):SetBuildOrMap(buildtypeconfig.nTileType);
             self:getSystem('playeropersystem'):SetChangeMapType(v.nType);
         end)
         btn_mapbuild.bVisible = false;
         table.insert(tbMapBuildList, btn_mapbuild);
 
         local ipt_mapbuild = uimgr:getInstance():create("shapetextinput","ipt_mapbuild"..v.sName);
-        ipt_mapbuild:SetPosition(v.x + v.w + 2, v.y);
-        ipt_mapbuild:SetSize(80,40);
+        ipt_mapbuild:SetPosition(3 + 103, (H - 43) - (i * (40 + 3)));
+        ipt_mapbuild:SetSize(100,40);
         ipt_mapbuild:SetText(" ");
+        ipt_mapbuild:SetData("Style", "nFontSize", 20);
+        ipt_mapbuild:SetData("Style", "bCenter", false);
         ipt_mapbuild:SetStyle(1);
         ipt_mapbuild.bVisible = false;
+        ipt_mapbuild.bOpenbBubbling = false; -- 可以鼠标穿透
         table.insert(tbMapBuildList, ipt_mapbuild);
     end 
 
     local btn_build = uimgr:getInstance():create("shapebutton","btn_build");
-    btn_build:SetPosition(48, H - 42);
+    btn_build:SetPosition(40 + 6, H - 43);
     btn_build:SetSize(80,40);
     btn_build:SetText("核芯");
     btn_build:SetData("Style", "nFontSize", 20);
     btn_build.bVisible = false;
     btn_build:SetData("Oper", "onClick", function ()
-        self:getSystem('playeropersystem'):SetBuildOrMap(2);
+        self:getSystem('playeropersystem'):SetBuildOrMap(buildtypeconfig.nCoreType);
+    end)
+
+    local btn_army = uimgr:getInstance():create("shapebutton","btn_army");
+    btn_army:SetPosition(48 + 82, H - 43);
+    btn_army:SetSize(80,40);
+    btn_army:SetText("防御");
+    btn_army:SetData("Style", "nFontSize", 20);
+    btn_army.bVisible = false;
+    btn_army:SetData("Oper", "onClick", function ()
+        self:getSystem('playeropersystem'):SetBuildOrMap(buildtypeconfig.nArmyType);
+    end)
+
+    local btn_uninstall = uimgr:getInstance():create("shapebutton","btn_uninstall");
+    btn_uninstall:SetPosition(50 + 82 * 2, H - 43);
+    btn_uninstall:SetSize(80,40);
+    btn_uninstall:SetText("卸载");
+    btn_uninstall:SetData("Style", "nFontSize", 20);
+    btn_uninstall.bVisible = false;
+    btn_uninstall:SetData("Oper", "onClick", function ()
+        self:getSystem('playeropersystem'):SetBuildOrMap(buildtypeconfig.nXieZai);
     end)
 
     local btn_map = uimgr:getInstance():create("shapebutton","btn_map");
-    btn_map:SetPosition(3, H - 42);
+    btn_map:SetPosition(3, H - 43);
     btn_map:SetSize(40,40);
     btn_map:SetText("+");
     btn_map:SetData("Oper", "onClick", function ()
@@ -192,6 +217,8 @@ function gamescene:CreateUI()
             v.bVisible = not v.bVisible;
         end 
         btn_build.bVisible = not btn_build.bVisible;
+        btn_army.bVisible = not btn_army.bVisible;
+        btn_uninstall.bVisible = not btn_uninstall.bVisible;
         if btn_build.bVisible == true then 
             btn_map:SetText("-");
         else 
@@ -200,12 +227,12 @@ function gamescene:CreateUI()
     end)
 
 
-    local btn_menu = uimgr:getInstance():create("shapebutton","btn_menu");
-    btn_menu:SetPosition(W - 82, H - 42);
-    btn_menu:SetSize(80,40);
-    btn_menu:SetText("菜单");
-    btn_menu:SetData("Style", "nFontSize", 20);
-    btn_menu:SetData("Oper", "onClick", function ()
-        scenemgr:getInstance():switchScene("welcomescene");
-    end)
+    -- local btn_menu = uimgr:getInstance():create("shapebutton","btn_menu");
+    -- btn_menu:SetPosition(W - 82, H - 43);
+    -- btn_menu:SetSize(80,40);
+    -- btn_menu:SetText("菜单");
+    -- btn_menu:SetData("Style", "nFontSize", 20);
+    -- btn_menu:SetData("Oper", "onClick", function ()
+    --     scenemgr:getInstance():switchScene("welcomescene");
+    -- end)
 end

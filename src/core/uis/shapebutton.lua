@@ -4,6 +4,7 @@ function shapebutton:create()
     self.id = baseorigin:getInstance():getID();
     self.nLayerIndex = 1;
     self.bBubbling = false;
+    self.bOpenbBubbling = true;
     local tbCompo = 
     {
         ['Position'] = {x = 100,y = 100};
@@ -63,7 +64,9 @@ function shapebutton:update(dt)
               self:SetData("Oper","bHoverMove",true);
             end
         end
-        self.bBubbling = true;
+        if self.bOpenbBubbling then 
+            self.bBubbling = true;
+        end
     else
         self:SetData("Oper","bHover",false);
         self:SetData("Oper","bHoverMove",false);

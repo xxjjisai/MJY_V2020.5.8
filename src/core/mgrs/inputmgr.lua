@@ -16,7 +16,7 @@ function inputmgr:keypressed(key)
     if key == 'x' then 
         g_option.DEBUG = 0;
     end 
-    if key == 'C' then 
+    if key == 'c' then 
         g_option.DEBUG = 2;
     end 
 end

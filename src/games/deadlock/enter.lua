@@ -8,6 +8,7 @@ _G.enter =
         "mapconfig",
         "map15",
         "errortextconfig",
+        "buildconfig",
     };
 
     scenes = 
@@ -32,5 +33,6 @@ _G.enter =
         "collectmineralsystem",
         "tilesystem",
         "playersystem",
+        "armysystem",
     };
 }

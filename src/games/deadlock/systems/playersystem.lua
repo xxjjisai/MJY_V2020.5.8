@@ -6,17 +6,31 @@ end
 
 function playersystem:onEnterScene()
     self.tbMineralInfo = {};
-    -- baseevent:getInstance():addEvent(self:getSystem('collectmineralsystem'),self);
+    self.tbMineralRound = {};
+    baseevent:getInstance():addEvent(self:getSystem('collectmineralsystem'),self);
 end
 
 function playersystem:onExitScene()
     self.tbMineralInfo = nil;
-    -- baseevent:getInstance():removeEvent(self,self:getSystem('collectmineralsystem'));
+    self.tbMineralRound = nil;
+    baseevent:getInstance():removeEvent(self,self:getSystem('collectmineralsystem'));
 end
 
--- function playersystem:EvtCollectMineral(nMapType)
---     self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] or 0;
---     self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] + 1;
---     local tmpui = uimgr:getInstance():getByName("ipt_mapbuild"..nMapType);
---     tmpui:SetText(' x '..self.tbMineralInfo[nMapType]);
--- end
+function playersystem:EvtCollectMineral(nMapType)
+    self.tbMineralRound[nMapType] = self.tbMineralRound[nMapType] or 0;
+    self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] or 0;
+    self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] + 1;
+    if self.tbMineralInfo[nMapType] >= 10000 then 
+        self.tbMineralInfo[nMapType] = 0;
+        self.tbMineralRound[nMapType] = self.tbMineralRound[nMapType] + 1;
+    end 
+ 
+    local btn_tmpui = uimgr:getInstance():getByName("btn_mapbuild"..nMapType);
+    -- btn_tmpui:SetText(' x '..self.tbMineralInfo[nMapType]);
+    btn_tmpui:SetText(self.tbMineralInfo[nMapType]);
+
+    if self.tbMineralRound[nMapType] > 0 then 
+        local ipt_tmpui = uimgr:getInstance():getByName("ipt_mapbuild"..nMapType);
+        ipt_tmpui:SetText(' x '..self.tbMineralRound[nMapType]);
+    end
+end

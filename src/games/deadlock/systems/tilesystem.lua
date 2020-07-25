@@ -38,15 +38,17 @@ function tilesystem:ReClearTile(coreID)
     local mx,my = iMineral:getComponent("position"):getAttribute("x"),iMineral:getComponent("position"):getAttribute("y");
     local nMCol,nMRow = math.floor(mx/g_gameCfg.nBumpWorldCellSize) + 1,math.floor(my/g_gameCfg.nBumpWorldCellSize) + 1;
     for i,iTargetEnt in ipairs(self:getTargets()) do 
-        local c_tiletype = iTargetEnt:getComponent("tiletype").tbData;
-        local ex,ey = iTargetEnt:getComponent("position"):getAttribute("x"),iTargetEnt:getComponent("position"):getAttribute("y");
-        local nECol,nERow = math.floor(ex/g_gameCfg.nBumpWorldCellSize) + 1,math.floor(ey/g_gameCfg.nBumpWorldCellSize) + 1; 
-        if nMCol == nECol and nMRow == nERow then 
-            c_tiletype.nHasMineral = false;
-            self:getSystem('buildsystem'):SetMapBuild(nECol,nERow,false);
-            -- self:trace(1,string.format('ReClearTile create nECol:%s,nERow:%s', nECol,nERow));
-            iTargetEnt:getComponent("tiletype"):addAttribute("nLastTime",GetTime());
-            break;
+        if iTargetEnt:getComponent("tiletype") then 
+            local c_tiletype = iTargetEnt:getComponent("tiletype").tbData;
+            local ex,ey = iTargetEnt:getComponent("position"):getAttribute("x"),iTargetEnt:getComponent("position"):getAttribute("y");
+            local nECol,nERow = math.floor(ex/g_gameCfg.nBumpWorldCellSize) + 1,math.floor(ey/g_gameCfg.nBumpWorldCellSize) + 1; 
+            if nMCol == nECol and nMRow == nERow then 
+                c_tiletype.nHasMineral = false;
+                self:getSystem('buildsystem'):SetMapBuild(nECol,nERow,false);
+                -- self:trace(1,string.format('ReClearTile create nECol:%s,nERow:%s', nECol,nERow));
+                iTargetEnt:getComponent("tiletype"):addAttribute("nLastTime",GetTime());
+                break;
+            end
         end
     end
 end

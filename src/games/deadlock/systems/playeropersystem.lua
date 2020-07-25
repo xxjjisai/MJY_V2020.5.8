@@ -31,7 +31,7 @@ function playeropersystem:mousepressed(x,y,button)
         return;
     end 
     if button == 1 then 
-        if self.nBuildOrMap == 1 then -- 设置地图类型
+        if self.nBuildOrMap == buildtypeconfig.nTileType then -- 设置地图类型
             if tbMap[nMRow][nMCol] ~= 1 then 
                 return;
             end 
@@ -40,8 +40,12 @@ function playeropersystem:mousepressed(x,y,button)
             if nErrorCode == errorcode.error_code_11 then 
                 -- self:trace(1,tbMap[nMRow][nMCol]);
             end
-        elseif self.nBuildOrMap == 2 then -- 建筑核芯
+        elseif self.nBuildOrMap == buildtypeconfig.nCoreType then -- 建筑核芯
             self:getSystem('buildsystem'):BuildCore(nMRow,nMCol,tbMap[nMRow][nMCol]);
+        elseif self.nBuildOrMap == buildtypeconfig.nArmyType then -- 建筑军队
+            self:getSystem('buildsystem'):BuildArmy(nMRow,nMCol,tbMap[nMRow][nMCol]);
+        elseif self.nBuildOrMap == buildtypeconfig.nXieZai then -- 卸载
+            self:getSystem('buildsystem'):BuildUninstall(nMRow,nMCol,tbMap[nMRow][nMCol]);
         end
     end
 end

@@ -11,7 +11,16 @@ end
 function actormovesystem:MovePath(iEnt,tbPathList,pfn)
     local c_actormove = iEnt:getComponent('actormove').tbData;
     if c_actormove.bMoving then 
+        if pfn then 
+            pfn(-1);
+        end 
         return 
+    end 
+    if tbPathList == nil then 
+        if pfn then 
+            pfn(-1);
+        end 
+        return
     end 
     table.remove(tbPathList, 1);
     c_actormove.tbPathList = tbPathList;

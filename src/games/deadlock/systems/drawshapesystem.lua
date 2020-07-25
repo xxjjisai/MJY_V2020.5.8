@@ -36,7 +36,7 @@ function drawshapesystem:StepHandler(iTargetEnt)
     local fillType = c_shaperender:getAttribute("fillType");
     love.graphics.setColor(color);
     if shapeType == "rectangle" then
-        love.graphics.rectangle('fill',x,y,w,h);
+        love.graphics.rectangle(fillType,x,y,w,h);
         -- love.graphics.setColor(g_color.WHITE);
         -- love.graphics.rectangle('line',x,y,w,h);
         -- love.graphics.setFont(resmgr:getInstance():GetFont(12));

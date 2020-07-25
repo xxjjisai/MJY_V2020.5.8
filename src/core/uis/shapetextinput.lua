@@ -4,6 +4,7 @@ function shapetextinput:create()
     self.id = baseorigin:getInstance():getID();
     self.nLayerIndex = 1;
     self.bBubbling = false;
+    self.bOpenbBubbling = true;
     local tbCompo = 
     {
         ['Position'] = {x = 100,y = 100};
@@ -19,6 +20,7 @@ function shapetextinput:create()
         };
         ['Style'] = {
             bBg = true;
+            bCenter = true; 
             bBorder = false;
             sborderFill = "line";
             sbgFill = "fill";
@@ -65,7 +67,9 @@ function shapetextinput:update(dt)
               self:SetData("Oper","bHoverMove",true);
            end
         end
-        self.bBubbling = true;
+        if self.bOpenbBubbling then 
+            self.bBubbling = true;
+        end
     else
         self:SetData("Oper","bHover",false); 
         self:SetData("Oper","bHoverMove",false);
@@ -104,6 +108,10 @@ function shapetextinput:draw()
     love.graphics.setFont(font);
     local nFontx = ((self:GetData("Position","x") + self:GetData("Size","w")*0.5) ) - font:getWidth(self:GetData("Style","sText"))*0.5;
     local nFonty = ((self:GetData("Position","y") + self:GetData("Size","h")*0.5) ) - font:getHeight(self:GetData("Style","sText"))*0.5;
+    if not self:GetData("Style","bCenter") then 
+        nFontx = self:GetData("Position","x");
+        nFonty = self:GetData("Position","y");
+    end
     love.graphics.print(self:GetData("Style","sText"),nFontx,nFonty);
     love.graphics.setColor(1,1,1,1);
 end
