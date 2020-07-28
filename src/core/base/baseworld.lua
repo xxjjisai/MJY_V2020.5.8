@@ -38,6 +38,15 @@ function baseworld:getEntity(id)
     return nil;
 end
 
+function baseworld:getEntityByName(sName)
+    for _,tmp_iEnt in pairs(self.tbEntitiesList) do 
+        if tmp_iEnt.name == sName then 
+            return tmp_iEnt;
+        end 
+    end
+    return nil;
+end
+
 function baseworld:getEntityByType(sType)
     local tbEntList = {};
     for _,tmp_iEnt in pairs(self.tbEntitiesList) do 

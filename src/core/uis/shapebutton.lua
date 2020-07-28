@@ -82,14 +82,18 @@ function shapebutton:draw()
     local bgcolor = self:GetData("Style","bgcolor");
     local txtcolor = self:GetData("Style","txtcolor");
     local bordercolor = self:GetData("Style","bordercolor");
+    local bGreyColor = self:GetData("Style","bGreyColor");
     if self.bGrey then 
-        local bGreyColor = self:GetData("Style","bGreyColor");
         bgcolor = {bGreyColor[1],bGreyColor[2],bGreyColor[3],bgcolor[4]};
     end
     if self:GetData("Oper","bShowHover") then 
         if self:GetData("Oper","bHover") then 
-            local hovercolor = self:GetData("Style","bHoverColor");
-            bgcolor = {hovercolor[1],hovercolor[2],hovercolor[3],bgcolor[4]};
+            if self.bGrey then 
+                love.graphics.setColor(bGreyColor);
+            else
+                local hovercolor = self:GetData("Style","bHoverColor");
+                bgcolor = {hovercolor[1],hovercolor[2],hovercolor[3],bgcolor[4]};
+            end
         end
     end
     if self:GetData("Style","bBg") then 
@@ -131,6 +135,9 @@ end
 function shapebutton:mousepressed(x,y,button)
     if not self.bVisible then 
         return 
+    end 
+    if self.bGrey then 
+        return;
     end 
     local tbMouse = {
         x = x,

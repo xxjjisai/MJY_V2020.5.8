@@ -1,7 +1,8 @@
 _G.gamescene = class('gamescene',basescene)
 
-function basescene:onExitScene()
+function gamescene:onExitScene()
     g_project.CUR_PROJECT_CAMERA_SCALE = 0.1;
+    self.e_follow_camera = nil;
 end
 
 function gamescene:onEnterScene()
@@ -12,11 +13,9 @@ function gamescene:onEnterScene()
         --     local e_gametitle = actor:new({c_title});
         --     local s_welcomesystem = welcomesystem:new();
         -- end
-        cameramgr:TweenScale(3,0.55,function ()
-            g_project.CUR_PROJECT_CAMERA_SCALE = 0.55;
-            self:CreateUI();
-        end)
 
+
+        local s_starskysystem = starskysystem:new();
         local s_drawshapesystem = drawshapesystem:new();
         local s_wasdmovesystem = wasdmovesystem:new();
         local s_animationsystem = animationsystem:new();
@@ -45,26 +44,44 @@ function gamescene:onEnterScene()
             s_playersystem:startup();
             s_animationsystem:startup();
             s_armysystem:startup();
+            s_starskysystem:startup();
         end)
 
         
-        -- self:CreateRokt();
         self:getSystem('mapsystem'):MakeMap();
         self:CreateCameraFollowActor();
         self:CreatePlanetSide();
         self:CreateSide();
-        
+
+        cameramgr:TweenScale(3,0.55,function ()
+            g_project.CUR_PROJECT_CAMERA_SCALE = 0.55;
+        end)
+        self:CreateRokt(function () 
+            self:CreateUI();
+        end);
     end)
 end
 
-function gamescene:CreateRokt()
-    local c_position = position:new({ x = (g_gameCfg.nBumpWorldCellSize * 32)/2 - g_gameCfg.nBumpWorldCellSize/2, y = -2000 });
+function gamescene:CreateRokt(pfn)
+    local tbMap = self:getSystem('mapsystem'):getCurMap();
+    local tbBornList = {};
+    for i = 1, #tbMap do 
+        for j = 1, #tbMap[i] do 
+            if tbMap[i][j] == 1 then 
+                table.insert(tbBornList,{ nCol = i, nRow = j })
+            end
+        end
+    end
+    local tbBornPoint = tbBornList[math.random(1,#tbBornList)];
+    local nBornX,nBornY = (tbBornPoint.nRow-1) * g_gameCfg.nBumpWorldCellSize,(tbBornPoint.nCol-1) * g_gameCfg.nBumpWorldCellSize
+
+    local c_position = position:new({ x = nBornX, y = -2000 });
     local c_size = size:new({ w = g_gameCfg.nBumpWorldCellSize, h = g_gameCfg.nBumpWorldCellSize });
     local c_direction = direction:new({x = 1, y= 1 });
     local c_speed = speed:new({speed=450}); 
     local c_animaterender = animaterender:new({
         bRunning = true, 
-        color = g_color.RED, 
+        color = {1,1,1,1}, 
         nStartFrame = 1, 
         nEndFrame = 1, 
         bStartPlay = true, 
@@ -74,10 +91,34 @@ function gamescene:CreateRokt()
         nTotalFrame= 1, 
         nLoop = 1, 
         nTotalPlayCount = 0, 
-        nTimeAfterPlay = 0.15 
+        nTimeAfterPlay = 0.15,
     });
     local e_rokt = actor:new({c_position,c_size,c_direction,c_speed,c_animaterender});
-    timer:tween(3, e_rokt:tweenData('position'), { y = (g_gameCfg.nBumpWorldCellSize * 32)/2 - g_gameCfg.nBumpWorldCellSize/2 }, 'in-out-cubic', function() 
+    timer:tween(5, e_rokt:tweenData('position'), { y = nBornY }, 'in-out-cubic', function() 
+        local tbExplorerMapInfo = self:getSystem('mapsystem').tbExplorerMapInfo;
+        tbExplorerMapInfo[tbBornPoint.nCol][tbBornPoint.nRow] = 2;
+        local tbNegi = {
+            { tbBornPoint.nCol, tbBornPoint.nRow - 1 },
+            { tbBornPoint.nCol, tbBornPoint.nRow + 1 },
+            { tbBornPoint.nCol - 1, tbBornPoint.nRow },
+            { tbBornPoint.nCol + 1, tbBornPoint.nRow },
+        }
+        for i,v in ipairs(tbNegi) do 
+            if tbExplorerMapInfo[v[1]][v[2]] == 1 then 
+                tbExplorerMapInfo[v[1]][v[2]] = 2;
+            end 
+        end 
+        self.e_follow_camera:getComponent('position'):addAttribute('x', nBornX);
+        self.e_follow_camera:getComponent('position'):addAttribute('y', nBornY);
+        cameramgr:TweenScale(1,1,function ()
+            g_project.CUR_PROJECT_CAMERA_SCALE = 0.55;
+            timer:tween(2, e_rokt:tweenData('animaterender'), { color = {1,1,1,0} }, 'in-out-cubic', function() 
+                -- e_rokt:getComponent('animaterender'):addAttribute('color', {1,1,1,1});
+                if pfn then 
+                    pfn()
+                end
+            end)
+        end)
 
     end)
 end
@@ -102,8 +143,8 @@ function gamescene:CreateCameraFollowActor()
     local c_speed = speed:new({speed=450}); 
     local c_wasdmove = wasdmove:new();
     local c_bumprect = bumprect:new();
-    local e_follow_camera = actor:new({c_position,c_size,c_direction,c_speed,c_wasdmove,c_bumprect});
-    cameramgr:getInstance():SetFollowPlayer(e_follow_camera);
+    self.e_follow_camera = actor:new({c_position,c_size,c_direction,c_speed,c_wasdmove,c_bumprect});
+    cameramgr:getInstance():SetFollowPlayer(self.e_follow_camera);
 end
 
 function gamescene:CreateSide()
@@ -208,6 +249,34 @@ function gamescene:CreateUI()
         self:getSystem('playeropersystem'):SetBuildOrMap(buildtypeconfig.nXieZai);
     end)
 
+    local btn_explorer = uimgr:getInstance():create("shapebutton","btn_explorer");
+    btn_explorer:SetPosition(50 + 2 + 82 * 3, H - 43);
+    btn_explorer:SetSize(80,40);
+    btn_explorer:SetText("探索");
+    btn_explorer:SetData("Style", "nFontSize", 20);
+    btn_explorer.bVisible = false;
+    btn_explorer:SetData("Oper", "onClick", function ()
+        if self:getSystem('mapsystem').bExplorerMap then 
+            self:getSystem('mapsystem'):switchMapShow(false);
+            btn_explorer:SetText("探索");
+            for i,v in ipairs(tbMapBuildList) do 
+                v.bGrey = false;
+            end 
+            btn_build.bGrey = false;
+            btn_army.bGrey = false;
+            btn_uninstall.bGrey = false;
+        else 
+            self:getSystem('mapsystem'):switchMapShow(true);
+            btn_explorer:SetText("采集");
+            for i,v in ipairs(tbMapBuildList) do 
+                v.bGrey = true;
+            end 
+            btn_build.bGrey = true;
+            btn_army.bGrey = true;
+            btn_uninstall.bGrey = true;
+        end
+    end)
+
     local btn_map = uimgr:getInstance():create("shapebutton","btn_map");
     btn_map:SetPosition(3, H - 43);
     btn_map:SetSize(40,40);
@@ -219,6 +288,7 @@ function gamescene:CreateUI()
         btn_build.bVisible = not btn_build.bVisible;
         btn_army.bVisible = not btn_army.bVisible;
         btn_uninstall.bVisible = not btn_uninstall.bVisible;
+        btn_explorer.bVisible = not btn_explorer.bVisible;
         if btn_build.bVisible == true then 
             btn_map:SetText("-");
         else 

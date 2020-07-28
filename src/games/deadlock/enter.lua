@@ -15,6 +15,7 @@ _G.enter =
     {
         "mainscene",
         "welcomescene",
+        "settingscene",
         "gamescene",
     };
 
@@ -34,5 +35,6 @@ _G.enter =
         "tilesystem",
         "playersystem",
         "armysystem",
+        "starskysystem",
     };
 }

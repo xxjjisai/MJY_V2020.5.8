@@ -20,17 +20,28 @@ function playersystem:EvtCollectMineral(nMapType)
     self.tbMineralRound[nMapType] = self.tbMineralRound[nMapType] or 0;
     self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] or 0;
     self.tbMineralInfo[nMapType] = self.tbMineralInfo[nMapType] + 1;
-    if self.tbMineralInfo[nMapType] >= 10000 then 
+    if self.tbMineralInfo[nMapType] >= mineraltotalconfig[100 + nMapType] then 
         self.tbMineralInfo[nMapType] = 0;
         self.tbMineralRound[nMapType] = self.tbMineralRound[nMapType] + 1;
     end 
- 
+    self:ShowUI(self.tbMineralInfo[nMapType],self.tbMineralRound[nMapType],nMapType);
+    -- local btn_tmpui = uimgr:getInstance():getByName("btn_mapbuild"..nMapType);
+    -- -- btn_tmpui:SetText(' x '..self.tbMineralInfo[nMapType]);
+    -- btn_tmpui:SetText(self.tbMineralInfo[nMapType]);
+
+    -- if self.tbMineralRound[nMapType] > 0 then 
+    --     local ipt_tmpui = uimgr:getInstance():getByName("ipt_mapbuild"..nMapType);
+    --     ipt_tmpui:SetText(' x '..self.tbMineralRound[nMapType]);
+    -- end
+end
+
+function playersystem:ShowUI(a,b,nMapType)
     local btn_tmpui = uimgr:getInstance():getByName("btn_mapbuild"..nMapType);
     -- btn_tmpui:SetText(' x '..self.tbMineralInfo[nMapType]);
-    btn_tmpui:SetText(self.tbMineralInfo[nMapType]);
+    btn_tmpui:SetText(a);
 
-    if self.tbMineralRound[nMapType] > 0 then 
+    if b > 0 then 
         local ipt_tmpui = uimgr:getInstance():getByName("ipt_mapbuild"..nMapType);
-        ipt_tmpui:SetText(' x '..self.tbMineralRound[nMapType]);
+        ipt_tmpui:SetText(' x '..b);
     end
 end
